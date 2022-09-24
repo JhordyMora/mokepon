@@ -1,4 +1,5 @@
-let ataqueJugador = 
+let ataqueJugador;
+let ataqueEnemigo;
 
 function iniciarJuego(){
     let botonMascotaJugador = document.querySelector("#btn-mascota");
@@ -84,18 +85,54 @@ function aleatorio(min, max){
 
 function ataqueFuego(){
     ataqueJugador = "Fuego";
-    alert(ataqueJugador);
+    ataqueAleatorioEnemigo();
 }
 
 function ataqueAgua(){
     ataqueJugador = "Agua";
-    alert(ataqueJugador);
+    ataqueAleatorioEnemigo();
 }
 
 function ataqueTierra(){
     ataqueJugador = "Tierra";
-    alert(ataqueJugador);
+    ataqueAleatorioEnemigo();
+}
 
+function ataqueAleatorioEnemigo(){
+    let ataqueAleatorio = aleatorio(1,3);
+
+    if (ataqueAleatorio==1){
+        ataqueEnemigo = "Fuego";
+    } else if (ataqueAleatorio==2){
+        ataqueEnemigo = "Agua";
+    } else {
+        ataqueEnemigo = "Tierra";
+    }
+
+    combate();
+}
+
+function crearMensaje(resultadoBatalla){
+    let  parrafo = document.createElement("p");
+    let sectionMessage = document.querySelector("#mensajes");
+
+    parrafo.innerHTML = "Tu mascota atacó con "+ ataqueJugador + ". La mascota de tu enemigo ataco con " + ataqueEnemigo + " - " + resultadoBatalla;
+
+    sectionMessage.appendChild(parrafo);
+}
+
+function combate(){
+    if(ataqueEnemigo==ataqueJugador){
+        crearMensaje("Empate");
+    } else if(ataqueJugador == "Fuego" && ataqueEnemigo == "Tierra"){
+        crearMensaje("Ganaste");
+    } else if(ataqueJugador == "Agua" && ataqueEnemigo == "Fuego"){
+        crearMensaje("Ganaste");
+    } else if(ataqueJugador == "Tierra" && ataqueEnemigo == "Agua"){
+        crearMensaje("Ganaste");
+    } else {
+        crearMensaje("Perdiste");
+    }
 }
 
 window.addEventListener("load", iniciarJuego);
