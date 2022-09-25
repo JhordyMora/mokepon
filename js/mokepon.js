@@ -4,8 +4,13 @@ let vidasJugador = 3;
 let vidasEnemigo = 3;
 
 function iniciarJuego(){
+    let sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
+    sectionSeleccionarAtaque.style.display = "none";
+    
+    let seccionReiniciar = document.querySelector("#reiniciar");
+    seccionReiniciar.style.display = "none";
+
     let botonMascotaJugador = document.querySelector("#btn-mascota");
-    //console.log(botonMascotaJugador);
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
 
     let botonFuego = document.querySelector("#btn-fuego");
@@ -14,9 +19,15 @@ function iniciarJuego(){
     botonAgua.addEventListener("click", ataqueAgua);
     let botonTierra = document.querySelector("#btn-tierra");
     botonTierra.addEventListener("click", ataqueTierra);
+
+    let botonReiniciar = document.querySelector("#btn-reiniciar");
+    botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
 function seleccionarMascotaJugador(){
+    let sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
+    sectionSeleccionarAtaque.style.display = "block";
+
     let inputHipodoge = document.querySelector("#hipodoge");
     let inputCapipego = document.querySelector("#capipego");
     let inputRatigueya = document.querySelector("#ratigueya");
@@ -54,14 +65,6 @@ function seleccionarMascotaJugador(){
     }
 
     seleccionarMascotaEnemigo();
-    /*
-    alert("Has seleccionado una mascota");
-    let Element = document.querySelector("#hipodoge");
-    let Element = document.querySelector("#hipodoge");
-    let Element = document.querySelector("#hipodoge");
-    let Element = document.querySelector("#hipodoge");
-    let Element = document.querySelector("#hipodoge");
-    */
 
 }
 
@@ -123,6 +126,26 @@ function crearMensaje(resultadoBatalla){
     sectionMessage.appendChild(parrafo);
 }
 
+function crearMensajeFinal(resultadoFinal){
+    let  parrafo = document.createElement("p");
+    let sectionMessage = document.querySelector("#mensajes");
+
+    parrafo.innerHTML = resultadoFinal ;
+
+    sectionMessage.appendChild(parrafo);
+
+    let botonFuego = document.querySelector("#btn-fuego");
+    botonFuego.disabled = true;
+    let botonAgua = document.querySelector("#btn-agua");
+    botonAgua.disabled = true;
+    let botonTierra = document.querySelector("#btn-tierra");
+    botonTierra.disabled = true;
+
+    let seccionReiniciar = document.querySelector("#reiniciar");
+    seccionReiniciar.style.display = "block";
+
+}
+
 function combate(){
     let spanVidasJugador = document.querySelector("#vidas-jugador");
     let spanVidasEnemigo = document.querySelector('#vidas-enemigo');
@@ -146,6 +169,20 @@ function combate(){
         vidasJugador--;
         spanVidasJugador.innerHTML = vidasJugador;
     }
+
+    revisarVidas(vidasEnemigo, vidasJugador);
+}
+
+function revisarVidas(vidasEnemigo, vidasJugador){
+    if(vidasEnemigo==0){
+        crearMensajeFinal("Muy bien!! Ganaste :D");
+    } else if (vidasJugador ==0){
+        crearMensajeFinal("Ohh que mal! Perdiste :(");
+    }
+}
+
+function reiniciarJuego(){
+    location.reload();
 }
 
 window.addEventListener("load", iniciarJuego);
