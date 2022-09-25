@@ -6,35 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mokepon!</title>
     <script src="./js/mokepon.js"></script>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <h1>MOKEMON!🔥💧🌱</h1>
+    <h1 class="titulo">Mokepon!🔥💧🌱</h1>
     
     <section id="seleccionar-mascota">
-        <h2>Elige a tu mascota:</h2>
+        <h2 class="subtitulo">Elige a tu mascota:</h2>
+        <div class="tarjetas">
         
-        <label for="hipodoge">Hipodoge</label>
-        <input type="radio" name="mascota" id="hipodoge"/>
-        <label for="capipego">Capipego</label>
-        <input type="radio" name="mascota" id="capipego"/>
-        <label for="ratigueya">Ratigueya</label>
-        <input type="radio" name="mascota" id="ratigueya"/>
-        <label for="langostelvis">Langostelvis</label>
-        <input type="radio" name="mascota" id="langostelvis"/>
-        <label for="tucapalma">Tucapalma</label>
-        <input type="radio" name="mascota" id="tucapalma"/>
-        <label for="pydos">Pydos</label>
-        <input type="radio" name="mascota" id="pydos"/>
+            <label for="hipodoge" class="tarjeta-de-mokepon">Hipodoge</label>
+            <input type="radio" name="mascota" id="hipodoge"/>
+            <label for="capipego" class="tarjeta-de-mokepon">Capipego</label>
+            <input type="radio" name="mascota" id="capipego"/>
+            <label for="ratigueya"class="tarjeta-de-mokepon">Ratigueya</label>
+            <input type="radio" name="mascota" id="ratigueya"/>
+            <label for="langostelvis"class="tarjeta-de-mokepon">Langostelvis</label>
+            <input type="radio" name="mascota" id="langostelvis"/>
+            <label for="tucapalma" class="tarjeta-de-mokepon">Tucapalma</label>
+            <input type="radio" name="mascota" id="tucapalma"/>
+            <label for="pydos" class="tarjeta-de-mokepon">Pydos</label>
+            <input type="radio" name="mascota" id="pydos"/>
+        </div>
         
-        <!--
-            Hipodoge -> Agua
-            Capipego -> Tierra
-            Ratigueya -> Fuego
-        Langostelvis -> Agua y Fuego
-        Tucapalma -> Agua y Tierra
-        Pydos -> Fuego y Tierra
-        <button>Seleccionar</button>
-    -->
     <button id="btn-mascota">Seleccionar</button>
     </section>
 
