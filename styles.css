@@ -12,7 +12,7 @@ body{
 }
 
 .subtitulo{
-
+    font-size: 24px;
 }
 
 #seleccionar-mascota{
@@ -28,17 +28,27 @@ body{
 
 .tarjeta-de-mokepon{
     display: flex;
-    width: 200px;
-    height: 100px;
+    flex-direction: column;
+    width: 150px;
+    height: 150px;
     background: aquamarine;
-    justify-content: center;
     padding: 10px;
     box-sizing: border-box;
     margin: 10px;
     border: 2px solid red;
     border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarjeta-de-mokepon img{
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
 }
 
 input{
     display: none;
 }
+
