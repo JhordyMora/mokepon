@@ -27,6 +27,7 @@ function iniciarJuego(){
 function seleccionarMascotaJugador(){
     let sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
     sectionSeleccionarAtaque.style.display = "block";
+    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
 
     let inputHipodoge = document.querySelector("#hipodoge");
     let inputCapipego = document.querySelector("#capipego");
@@ -66,6 +67,7 @@ function seleccionarMascotaJugador(){
 
     seleccionarMascotaEnemigo();
 
+    sectionSeleccionarMascota.style.display = 'none'
 }
 
 function seleccionarMascotaEnemigo(){

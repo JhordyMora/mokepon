@@ -13,6 +13,8 @@ body{
 
 .subtitulo{
     font-size: 24px;
+    display: flex;
+    justify-content: center;
 }
 
 #seleccionar-mascota{
@@ -50,5 +52,16 @@ body{
 
 input{
     display: none;
+}
+
+#btn-mascota{
+    width: 180px;
+    height: 40px;
+    background: transparent;
+    border-radius: 40px;
+    color: orange;
+    border: 2px solid;
+    font-family: 'Bungee Spice', cursive;
+    margin: 20px 0px 0px 0px;
 }
 
