@@ -129,12 +129,12 @@ function crearMensaje(resultadoBatalla){
 }
 
 function crearMensajeFinal(resultadoFinal){
-    let  parrafo = document.createElement("p");
-    let sectionMessage = document.querySelector("#mensajes");
+    //let  parrafo = document.createElement("p");
+    let sectionMessage = document.querySelector("#mensaje-final");
 
-    parrafo.innerHTML = resultadoFinal ;
+    sectionMessage.innerHTML = resultadoFinal ;
 
-    sectionMessage.appendChild(parrafo);
+    //sectionMessage.appendChild(parrafo);
 
     let botonFuego = document.querySelector("#btn-fuego");
     botonFuego.disabled = true;

@@ -109,3 +109,9 @@ input{
     padding: 15px;
     background-color: white;
 }
+
+#mensaje-final{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
