@@ -26,7 +26,7 @@ function iniciarJuego(){
 
 function seleccionarMascotaJugador(){
     let sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
-    sectionSeleccionarAtaque.style.display = "block";
+    sectionSeleccionarAtaque.style.display = "Flex";
     let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
 
     let inputHipodoge = document.querySelector("#hipodoge");
@@ -144,7 +144,7 @@ function crearMensajeFinal(resultadoFinal){
     botonTierra.disabled = true;
 
     let seccionReiniciar = document.querySelector("#reiniciar");
-    seccionReiniciar.style.display = "block";
+    seccionReiniciar.style.display = "Flex";
 
 }
 

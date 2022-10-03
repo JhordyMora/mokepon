@@ -43,6 +43,10 @@ body{
     align-items: center;
 }
 
+input[type="radio"]:checked + label{
+    background-color: white;
+}
+
 .tarjeta-de-mokepon img{
     display: flex;
     justify-content: center;
@@ -65,3 +69,43 @@ input{
     margin: 20px 0px 0px 0px;
 }
 
+#seleccionar-ataque{
+    flex-direction: column;
+    align-items: center;
+}
+
+.ataques{
+    width: 180px;
+    height: 40px;
+    background: wheat;
+    border-radius: 40px;
+    color: orange;
+    border: 2px solid;
+    font-family: 'Bungee Spice', cursive;
+    font-size: large;
+    margin: 20px 0px 0px 0px;
+}
+
+#reiniciar{
+    justify-content: center;
+}
+
+#btn-reiniciar{
+    width: 180px;
+    height: 40px;
+    background: wheat;
+    border-radius: 40px;
+    color: orange;
+    border: 2px solid;
+    font-family: 'Bungee Spice', cursive;
+    font-size: large;
+    margin: 20px 0px 0px 0px;
+}
+
+#mensajes{
+    box-sizing: border-box;
+    width: 850px;
+    border: 5px solid black;
+    padding: 15px;
+    background-color: white;
+}
