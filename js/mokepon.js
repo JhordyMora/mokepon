@@ -38,28 +38,22 @@ function seleccionarMascotaJugador(){
     let spanMascotaJugador = document.querySelector("#mascota-jugador");
 
     if(inputHipodoge.checked){
-        alert("Has seleccionado a hipodoge");
-        spanMascotaJugador.innerHTML = "Hipodoge"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Hipodoge"
         //seleccionarMascotaEnemigo();
     } else if(inputCapipego.checked){
-        alert("Has seleccionado a capipego");
-        spanMascotaJugador.innerHTML = "Capipego"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Capipego"
         //seleccionarMascotaEnemigo();
     } else if(inputRatigueya.checked){
-        alert("Has seleccionado a ratigueya");
-        spanMascotaJugador.innerHTML = "Ratigueya"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Ratigueya"
         //seleccionarMascotaEnemigo();
     } else if(inputLangostelvis.checked){
-        alert("Has seleccionado a langostelvis");
-        spanMascotaJugador.innerHTML = "Langostelvis"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Langostelvis"
         //seleccionarMascotaEnemigo();
     } else if(inputTucapalma.checked){
-        alert("Has seleccionado a tucapalma");
-        spanMascotaJugador.innerHTML = "Tucapalma"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Tucapalma"
         //seleccionarMascotaEnemigo();
     } else if(inputPydos.checked){
-        alert("Has seleccionado a pydos");
-        spanMascotaJugador.innerHTML = "Pydos"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Pydos"
         //seleccionarMascotaEnemigo();
     } else {
         alert("No has seleccionado ningun Mokepon");
@@ -82,8 +76,7 @@ function seleccionarMascotaEnemigo(){
     }
     let randomNumber = aleatorio(1,6);
 
-    spanMascotaEnemigo.innerHTML = jsonMokemon[randomNumber];
-    alert("Tu enemigo has seleccionado a " + jsonMokemon[randomNumber]);
+    spanMascotaEnemigo.innerHTML = "La Mascota de tu Enemigo: " + jsonMokemon[randomNumber];
 }
 
 function aleatorio(min, max){
@@ -119,14 +112,28 @@ function ataqueAleatorioEnemigo(){
     combate();
 }
 
-function crearMensaje(resultadoBatalla){
+function crearMensaje(){
+    let pVidasJugador = document.querySelector("#vidas-jugador");
+    let pVidasEnemigo = document.querySelector("#vidas-enemigo");
+    let pAtaqueJugador = document.querySelector("#ataque-jugador");
+    let pAtaqueEnemigo = document.querySelector("#ataque-enemigo");
+
+
+
+    pVidasJugador.innerHTML = vidasJugador;
+    pVidasEnemigo.innerHTML = vidasEnemigo;
+    pAtaqueJugador.innerHTML = ataqueJugador;
+    pAtaqueEnemigo.innerHTML = ataqueEnemigo;
+}
+
+/*function crearMensaje(resultadoBatalla){
     let  parrafo = document.createElement("p");
     let sectionMessage = document.querySelector("#mensajes");
 
     parrafo.innerHTML = "Tu mascota atacó con "+ ataqueJugador + ". La mascota de tu enemigo ataco con " + ataqueEnemigo + " - " + resultadoBatalla;
 
     sectionMessage.appendChild(parrafo);
-}
+}*/
 
 function crearMensajeFinal(resultadoFinal){
     //let  parrafo = document.createElement("p");
