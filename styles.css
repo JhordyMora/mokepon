@@ -125,14 +125,8 @@ input{
 }
 
 @media (max-width: 1000px) {
-    .tarjetas, .tarjetas-ataques {
-      flex-direction: column;
-    }
-
-    #botones{
+    .tarjetas, #botones{
         display: flex;
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
+        flex-direction: column;      
     }
   }
