@@ -120,8 +120,8 @@ function crearMensaje(){
 
 
 
-    pVidasJugador.innerHTML = vidasJugador;
-    pVidasEnemigo.innerHTML = vidasEnemigo;
+    pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
+    pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
     pAtaqueJugador.innerHTML = ataqueJugador;
     pAtaqueEnemigo.innerHTML = ataqueEnemigo;
 }
@@ -164,19 +164,19 @@ function combate(){
     } else if(ataqueJugador == "Fuego" && ataqueEnemigo == "Tierra"){
         crearMensaje("Ganaste");
         vidasEnemigo--;
-        spanVidasEnemigo.innerHTML = vidasEnemigo;
+        spanVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
     } else if(ataqueJugador == "Agua" && ataqueEnemigo == "Fuego"){
         crearMensaje("Ganaste");
         vidasEnemigo--;
-        spanVidasEnemigo.innerHTML = vidasEnemigo;
+        spanVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
     } else if(ataqueJugador == "Tierra" && ataqueEnemigo == "Agua"){
         crearMensaje("Ganaste");
         vidasEnemigo--;
-        spanVidasEnemigo.innerHTML = vidasEnemigo;
+        spanVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
     } else {
         crearMensaje("Perdiste");
         vidasJugador--;
-        spanVidasJugador.innerHTML = vidasJugador;
+        spanVidasJugador.innerHTML = "Vidas: " + vidasJugador;
     }
 
     revisarVidas(vidasEnemigo, vidasJugador);
