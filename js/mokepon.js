@@ -11,6 +11,7 @@ function iniciarJuego(){
     seccionReiniciar.style.display = "none";
 
     let botonMascotaJugador = document.querySelector("#btn-mascota");
+
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
 
     let botonFuego = document.querySelector("#btn-fuego");
@@ -26,9 +27,8 @@ function iniciarJuego(){
 
 function seleccionarMascotaJugador(){
     let sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
-    sectionSeleccionarAtaque.style.display = "Flex";
     let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-
+    
     let inputHipodoge = document.querySelector("#hipodoge");
     let inputCapipego = document.querySelector("#capipego");
     let inputRatigueya = document.querySelector("#ratigueya");
@@ -39,29 +39,37 @@ function seleccionarMascotaJugador(){
 
     if(inputHipodoge.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + "Hipodoge"
-        //seleccionarMascotaEnemigo();
+        seleccionarMascotaEnemigo();
+        sectionSeleccionarMascota.style.display = 'none'
+        sectionSeleccionarAtaque.style.display = "Flex";
     } else if(inputCapipego.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + "Capipego"
-        //seleccionarMascotaEnemigo();
+        seleccionarMascotaEnemigo();
+        sectionSeleccionarMascota.style.display = 'none'
+        sectionSeleccionarAtaque.style.display = "Flex";
     } else if(inputRatigueya.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + "Ratigueya"
-        //seleccionarMascotaEnemigo();
+        seleccionarMascotaEnemigo();
+        sectionSeleccionarMascota.style.display = 'none'
+        sectionSeleccionarAtaque.style.display = "Flex";
     } else if(inputLangostelvis.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + "Langostelvis"
-        //seleccionarMascotaEnemigo();
+        seleccionarMascotaEnemigo();
+        sectionSeleccionarMascota.style.display = 'none'
+        sectionSeleccionarAtaque.style.display = "Flex";
     } else if(inputTucapalma.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + "Tucapalma"
-        //seleccionarMascotaEnemigo();
+        seleccionarMascotaEnemigo();
+        sectionSeleccionarMascota.style.display = 'none'
+        sectionSeleccionarAtaque.style.display = "Flex";
     } else if(inputPydos.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + "Pydos"
-        //seleccionarMascotaEnemigo();
+        seleccionarMascotaEnemigo();
+        sectionSeleccionarMascota.style.display = 'none'
+        sectionSeleccionarAtaque.style.display = "Flex";
     } else {
         alert("No has seleccionado ningun Mokepon");
     }
-
-    seleccionarMascotaEnemigo();
-
-    sectionSeleccionarMascota.style.display = 'none'
 }
 
 function seleccionarMascotaEnemigo(){
