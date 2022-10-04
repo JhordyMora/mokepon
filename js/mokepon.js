@@ -3,40 +3,46 @@ let ataqueEnemigo;
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 
+const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
+const seccionReiniciar = document.querySelector("#reiniciar");
+const botonMascotaJugador = document.querySelector("#btn-mascota");
+const botonFuego = document.querySelector("#btn-fuego");
+const botonAgua = document.querySelector("#btn-agua");
+const botonTierra = document.querySelector("#btn-tierra");
+const botonReiniciar = document.querySelector("#btn-reiniciar");
+
+const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota');
+
+const inputHipodoge = document.querySelector("#hipodoge");
+const inputCapipego = document.querySelector("#capipego");
+const inputRatigueya = document.querySelector("#ratigueya");
+const inputLangostelvis = document.querySelector("#langostelvis");
+const inputTucapalma = document.querySelector("#tucapalma");
+const inputPydos = document.querySelector("#pydos");
+const spanMascotaJugador = document.querySelector("#mascota-jugador");
+
+const pVidasJugador = document.querySelector("#vidas-jugador");
+const pVidasEnemigo = document.querySelector("#vidas-enemigo");
+const pAtaqueJugador = document.querySelector("#ataque-jugador");
+const pAtaqueEnemigo = document.querySelector("#ataque-enemigo");
+
+const spanVidasJugador = document.querySelector("#vidas-jugador");
+const spanVidasEnemigo = document.querySelector('#vidas-enemigo');
+
+const sectionMessage = document.querySelector("#mensaje-final");
+
+
 function iniciarJuego(){
-    let sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
-    sectionSeleccionarAtaque.style.display = "none";
-    
-    let seccionReiniciar = document.querySelector("#reiniciar");
+    sectionSeleccionarAtaque.style.display = "none"; 
     seccionReiniciar.style.display = "none";
-
-    let botonMascotaJugador = document.querySelector("#btn-mascota");
-
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
-
-    let botonFuego = document.querySelector("#btn-fuego");
     botonFuego.addEventListener("click", ataqueFuego);
-    let botonAgua = document.querySelector("#btn-agua");
     botonAgua.addEventListener("click", ataqueAgua);
-    let botonTierra = document.querySelector("#btn-tierra");
     botonTierra.addEventListener("click", ataqueTierra);
-
-    let botonReiniciar = document.querySelector("#btn-reiniciar");
     botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
 function seleccionarMascotaJugador(){
-    let sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
-    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-    
-    let inputHipodoge = document.querySelector("#hipodoge");
-    let inputCapipego = document.querySelector("#capipego");
-    let inputRatigueya = document.querySelector("#ratigueya");
-    let inputLangostelvis = document.querySelector("#langostelvis");
-    let inputTucapalma = document.querySelector("#tucapalma");
-    let inputPydos = document.querySelector("#pydos");
-    let spanMascotaJugador = document.querySelector("#mascota-jugador");
-
     if(inputHipodoge.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + "Hipodoge"
         seleccionarMascotaEnemigo();
@@ -121,13 +127,6 @@ function ataqueAleatorioEnemigo(){
 }
 
 function crearMensaje(){
-    let pVidasJugador = document.querySelector("#vidas-jugador");
-    let pVidasEnemigo = document.querySelector("#vidas-enemigo");
-    let pAtaqueJugador = document.querySelector("#ataque-jugador");
-    let pAtaqueEnemigo = document.querySelector("#ataque-enemigo");
-
-
-
     pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
     pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
     pAtaqueJugador.innerHTML = ataqueJugador;
@@ -145,28 +144,15 @@ function crearMensaje(){
 
 function crearMensajeFinal(resultadoFinal){
     //let  parrafo = document.createElement("p");
-    let sectionMessage = document.querySelector("#mensaje-final");
-
     sectionMessage.innerHTML = resultadoFinal ;
-
     //sectionMessage.appendChild(parrafo);
-
-    let botonFuego = document.querySelector("#btn-fuego");
     botonFuego.disabled = true;
-    let botonAgua = document.querySelector("#btn-agua");
     botonAgua.disabled = true;
-    let botonTierra = document.querySelector("#btn-tierra");
-    botonTierra.disabled = true;
-
-    let seccionReiniciar = document.querySelector("#reiniciar");
+    botonTierra.disabled = true;  
     seccionReiniciar.style.display = "Flex";
-
 }
 
 function combate(){
-    let spanVidasJugador = document.querySelector("#vidas-jugador");
-    let spanVidasEnemigo = document.querySelector('#vidas-enemigo');
-
     if(ataqueEnemigo==ataqueJugador){
         crearMensaje("Empate");
     } else if(ataqueJugador == "Fuego" && ataqueEnemigo == "Tierra"){
