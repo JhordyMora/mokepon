@@ -10,13 +10,14 @@ let inputRatigueya;
 let inputLangostelvis;
 let inputTucapalma;
 let inputPydos;
+let ataqueMokemonJugador = [];
+let botonFuego;// = document.querySelector("#btn-fuego");
+let botonAgua;// = document.querySelector("#btn-agua");
+let botonTierra;// = document.querySelector("#btn-tierra");
 
 const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
 const seccionReiniciar = document.querySelector("#reiniciar");
 const botonMascotaJugador = document.querySelector("#btn-mascota");
-const botonFuego = document.querySelector("#btn-fuego");
-const botonAgua = document.querySelector("#btn-agua");
-const botonTierra = document.querySelector("#btn-tierra");
 const botonReiniciar = document.querySelector("#btn-reiniciar");
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota');
@@ -29,6 +30,7 @@ const pAtaqueEnemigo = document.querySelector("#ataque-enemigo");
 
 const sectionMessage = document.querySelector("#mensaje-final");
 const contenedorTarjetas = document.querySelector("#contenedorTarjetas");
+const ataqueSection = document.querySelector("#botones");
 
 class Mokepon{
     constructor(nombre, foto, vida){
@@ -106,9 +108,6 @@ function iniciarJuego(){
     });
 
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
-    botonFuego.addEventListener("click", ataqueFuego);
-    botonAgua.addEventListener("click", ataqueAgua);
-    botonTierra.addEventListener("click", ataqueTierra);
     botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
@@ -120,6 +119,23 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarAtaque.style.display = "Flex";
         vidasJugador = hipodoge.vida;
         pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
+        hipodoge.ataques.forEach((ataque)=>{
+            ataques = `<button id=${ataque.id} class="ataques">${ataque.nombre}</button>`
+            ataqueMokemonJugador.push(ataque.id);
+            ataqueSection.innerHTML += ataques;    
+        });
+        if(ataqueMokemonJugador.includes("btn-fuego")){
+            botonFuego = document.querySelector("#btn-fuego");
+            botonFuego.addEventListener("click", ataqueFuego);
+        }
+        if(ataqueMokemonJugador.includes("btn-agua")){
+            botonAgua = document.querySelector("#btn-agua");
+            botonAgua.addEventListener("click", ataqueAgua);                
+        }
+        if(ataqueMokemonJugador.includes("btn-tierra")){
+            botonTierra = document.querySelector("#btn-tierra")
+            botonTierra.addEventListener("click", ataqueTierra);
+        }
     } else if(inputCapipego.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + capipego.nombre;
         seleccionarMascotaEnemigo();
@@ -127,6 +143,23 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarAtaque.style.display = "Flex";
         vidasJugador = capipego.vida;
         pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
+        capipego.ataques.forEach((ataque)=>{
+            ataques = `<button id=${ataque.id} class="ataques">${ataque.nombre}</button>`
+            ataqueMokemonJugador.push(ataque.id);
+            ataqueSection.innerHTML += ataques;
+        });
+        if(ataqueMokemonJugador.includes("btn-fuego")){
+            botonFuego = document.querySelector("#btn-fuego");
+            botonFuego.addEventListener("click", ataqueFuego);
+        }
+        if(ataqueMokemonJugador.includes("btn-agua")){
+            botonAgua = document.querySelector("#btn-agua");
+            botonAgua.addEventListener("click", ataqueAgua);                
+        }
+        if(ataqueMokemonJugador.includes("btn-tierra")){
+            botonTierra = document.querySelector("#btn-tierra")
+            botonTierra.addEventListener("click", ataqueTierra);
+        }
     } else if(inputRatigueya.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + ratigueya.nombre;
         seleccionarMascotaEnemigo();
@@ -134,6 +167,23 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarAtaque.style.display = "Flex";
         vidasJugador = ratigueya.vida;
         pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
+        ratigueya.ataques.forEach((ataque)=>{
+            ataques = `<button id=${ataque.id} class="ataques">${ataque.nombre}</button>`
+            ataqueMokemonJugador.push(ataque.id);
+            ataqueSection.innerHTML += ataques;
+        });
+        if(ataqueMokemonJugador.includes("btn-fuego")){
+            botonFuego = document.querySelector("#btn-fuego");
+            botonFuego.addEventListener("click", ataqueFuego);
+        }
+        if(ataqueMokemonJugador.includes("btn-agua")){
+            botonAgua = document.querySelector("#btn-agua");
+            botonAgua.addEventListener("click", ataqueAgua);                
+        }
+        if(ataqueMokemonJugador.includes("btn-tierra")){
+            botonTierra = document.querySelector("#btn-tierra")
+            botonTierra.addEventListener("click", ataqueTierra);
+        }
     } else if(inputLangostelvis.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + langostelvis.nombre;
         seleccionarMascotaEnemigo();
@@ -141,6 +191,23 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarAtaque.style.display = "Flex";
         vidasJugador = langostelvis.vida;
         pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
+        langostelvis.ataques.forEach((ataque)=>{
+            ataques = `<button id=${ataque.id} class="ataques">${ataque.nombre}</button>`
+            ataqueMokemonJugador.push(ataque.id);
+            ataqueSection.innerHTML += ataques;
+        });
+        if(ataqueMokemonJugador.includes("btn-fuego")){
+            botonFuego = document.querySelector("#btn-fuego");
+            botonFuego.addEventListener("click", ataqueFuego);
+        }
+        if(ataqueMokemonJugador.includes("btn-agua")){
+            botonAgua = document.querySelector("#btn-agua");
+            botonAgua.addEventListener("click", ataqueAgua);                
+        }
+        if(ataqueMokemonJugador.includes("btn-tierra")){
+            botonTierra = document.querySelector("#btn-tierra")
+            botonTierra.addEventListener("click", ataqueTierra);
+        }
     } else if(inputTucapalma.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + tucapalma.vida;
         seleccionarMascotaEnemigo();
@@ -148,6 +215,23 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarAtaque.style.display = "Flex";
         vidasJugador = tucapalma.vida;
         pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
+        tucapalma.ataques.forEach((ataque)=>{
+            ataques = `<button id=${ataque.id} class="ataques">${ataque.nombre}</button>`
+            ataqueMokemonJugador.push(ataque.id);
+            ataqueSection.innerHTML += ataques;
+        });
+        if(ataqueMokemonJugador.includes("btn-fuego")){
+            botonFuego = document.querySelector("#btn-fuego");
+            botonFuego.addEventListener("click", ataqueFuego);
+        }
+        if(ataqueMokemonJugador.includes("btn-agua")){
+            botonAgua = document.querySelector("#btn-agua");
+            botonAgua.addEventListener("click", ataqueAgua);                
+        }
+        if(ataqueMokemonJugador.includes("btn-tierra")){
+            botonTierra = document.querySelector("#btn-tierra")
+            botonTierra.addEventListener("click", ataqueTierra);
+        }
     } else if(inputPydos.checked){
         spanMascotaJugador.innerHTML = "Tu Mascota: " + pydos.vida;
         seleccionarMascotaEnemigo();
@@ -155,6 +239,23 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarAtaque.style.display = "Flex";
         vidasJugador = pydos.vida;
         pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
+        pydos.ataques.forEach((ataque)=>{
+            ataques = `<button id=${ataque.id} class="ataques">${ataque.nombre}</button>`
+            ataqueMokemonJugador.push(ataque.id);
+            ataqueSection.innerHTML += ataques;
+        });
+        if(ataqueMokemonJugador.includes("btn-fuego")){
+            botonFuego = document.querySelector("#btn-fuego");
+            botonFuego.addEventListener("click", ataqueFuego);
+        }
+        if(ataqueMokemonJugador.includes("btn-agua")){
+            botonAgua = document.querySelector("#btn-agua");
+            botonAgua.addEventListener("click", ataqueAgua);                
+        }
+        if(ataqueMokemonJugador.includes("btn-tierra")){
+            botonTierra = document.querySelector("#btn-tierra")
+            botonTierra.addEventListener("click", ataqueTierra);
+        }
     } else {
         alert("No has seleccionado ningun Mokepon");
     }
@@ -219,9 +320,15 @@ function crearMensajeFinal(resultadoFinal){
     //let  parrafo = document.createElement("p");
     sectionMessage.innerHTML = resultadoFinal ;
     //sectionMessage.appendChild(parrafo);
-    botonFuego.disabled = true;
-    botonAgua.disabled = true;
-    botonTierra.disabled = true;  
+    if(ataqueMokemonJugador.includes("btn-fuego")){
+        botonFuego.disabled = true;        
+    }
+    if(ataqueMokemonJugador.includes("btn-agua")){
+        botonAgua.disabled = true;                
+    }
+    if(ataqueMokemonJugador.includes("btn-tierra")){
+        botonTierra.disabled = true;  
+    }
     seccionReiniciar.style.display = "Flex";
 }
 
