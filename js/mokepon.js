@@ -1,3 +1,4 @@
+let mokepones = [];
 let ataqueJugador;
 let ataqueEnemigo;
 let vidasJugador = 3;
@@ -31,6 +32,70 @@ const spanVidasEnemigo = document.querySelector('#vidas-enemigo');
 
 const sectionMessage = document.querySelector("#mensaje-final");
 
+class Mokepon{
+    constructor(nombre, foto, vida){
+        this.nombre=nombre;
+        this.foto=foto;
+        this.vida = vida;
+        this.ataques=[];
+    }
+}
+
+let hipodoge = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_hipodoge_attack.png",5);
+
+let capipego = new Mokepon("Capipego","./assets/mokepons_mokepon_capipepo_attack.png",5);
+
+let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png",5);
+
+let langostelvis = new Mokepon("Langostelvis","./assets/2001.i203.007_cartoon_monster_set-11.jpg",5);
+
+let tucapalma = new Mokepon("Tucapalma","./assets/58_03.jpg",5);
+
+let pydos = new Mokepon("Pydos","./assets/Funny-orange-monster-on-transparent-PNG.png",5);
+
+hipodoge.ataques.push(
+    {nombre: "🔥", id: "btn-fuego"},
+    {nombre: "🔥", id: "btn-fuego"},
+    {nombre: "💧", id: "btn-agua"},
+    {nombre: "🌱", id: "btn-tierra"},
+);
+
+capipego.ataques.push(
+    {nombre: "💧", id: "btn-agua"},
+    {nombre: "💧", id: "btn-agua"},
+    {nombre: "🔥", id: "btn-fuego"},
+    {nombre: "🌱", id: "btn-tierra"},
+);
+
+ratigueya.ataques.push(
+    {nombre: "🌱", id: "btn-tierra"},
+    {nombre: "🌱", id: "btn-tierra"},
+    {nombre: "💧", id: "btn-agua"},
+    {nombre: "🔥", id: "btn-fuego"},
+);
+
+langostelvis.ataques.push(
+    {nombre: "🌱", id: "btn-tierra"},
+    {nombre: "🌱", id: "btn-tierra"},
+    {nombre: "💧", id: "btn-agua"},
+    {nombre: "💧", id: "btn-agua"},
+);
+
+tucapalma.ataques.push(
+    {nombre: "💧", id: "btn-agua"},
+    {nombre: "💧", id: "btn-agua"},
+    {nombre: "🔥", id: "btn-fuego"},
+    {nombre: "🔥", id: "btn-fuego"},
+);
+
+pydos.ataques.push(
+    {nombre: "🔥", id: "btn-fuego"},
+    {nombre: "🔥", id: "btn-fuego"},
+    {nombre: "🌱", id: "btn-tierra"},
+    {nombre: "🌱", id: "btn-tierra"},
+);
+
+mokepones.push(hipodoge,capipego,ratigueya,langostelvis,tucapalma,pydos);
 
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = "none"; 
