@@ -53,13 +53,11 @@ let pydos = new Mokepon("Pydos","./assets/Funny-orange-monster-on-transparent-PN
 
 hipodoge.ataques.push(
     {nombre: "🔥", id: "btn-fuego"},
-    {nombre: "🔥", id: "btn-fuego"},
     {nombre: "💧", id: "btn-agua"},
     {nombre: "🌱", id: "btn-tierra"},
 );
 
 capipego.ataques.push(
-    {nombre: "💧", id: "btn-agua"},
     {nombre: "💧", id: "btn-agua"},
     {nombre: "🔥", id: "btn-fuego"},
     {nombre: "🌱", id: "btn-tierra"},
@@ -67,29 +65,22 @@ capipego.ataques.push(
 
 ratigueya.ataques.push(
     {nombre: "🌱", id: "btn-tierra"},
-    {nombre: "🌱", id: "btn-tierra"},
     {nombre: "💧", id: "btn-agua"},
     {nombre: "🔥", id: "btn-fuego"},
 );
 
 langostelvis.ataques.push(
     {nombre: "🌱", id: "btn-tierra"},
-    {nombre: "🌱", id: "btn-tierra"},
-    {nombre: "💧", id: "btn-agua"},
     {nombre: "💧", id: "btn-agua"},
 );
 
 tucapalma.ataques.push(
     {nombre: "💧", id: "btn-agua"},
-    {nombre: "💧", id: "btn-agua"},
-    {nombre: "🔥", id: "btn-fuego"},
     {nombre: "🔥", id: "btn-fuego"},
 );
 
 pydos.ataques.push(
     {nombre: "🔥", id: "btn-fuego"},
-    {nombre: "🔥", id: "btn-fuego"},
-    {nombre: "🌱", id: "btn-tierra"},
     {nombre: "🌱", id: "btn-tierra"},
 );
 
