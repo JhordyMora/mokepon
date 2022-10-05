@@ -110,13 +110,14 @@ input{
     padding: 20px;
 }
 
-/*#mensajes{
+#resultadoCombate{
     box-sizing: border-box;
-    width: 850px;
+    width: 100%;
     border: 5px solid black;
     padding: 15px;
-    background-color: white;
-}*/
+    background-color: #FEF5AC;
+    text-align: center;
+}
 
 #mensaje-final{
     display: flex;

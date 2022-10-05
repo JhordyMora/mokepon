@@ -1,8 +1,15 @@
 let mokepones = [];
 let ataqueJugador;
 let ataqueEnemigo;
-let vidasJugador = 3;
-let vidasEnemigo = 3;
+let vidasJugador;
+let vidasEnemigo;
+let opcionDeMokepones;
+let inputHipodoge;
+let inputCapipego;
+let inputRatigueya;
+let inputLangostelvis;
+let inputTucapalma;
+let inputPydos;
 
 const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
 const seccionReiniciar = document.querySelector("#reiniciar");
@@ -13,13 +20,6 @@ const botonTierra = document.querySelector("#btn-tierra");
 const botonReiniciar = document.querySelector("#btn-reiniciar");
 
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota');
-
-const inputHipodoge = document.querySelector("#hipodoge");
-const inputCapipego = document.querySelector("#capipego");
-const inputRatigueya = document.querySelector("#ratigueya");
-const inputLangostelvis = document.querySelector("#langostelvis");
-const inputTucapalma = document.querySelector("#tucapalma");
-const inputPydos = document.querySelector("#pydos");
 const spanMascotaJugador = document.querySelector("#mascota-jugador");
 
 const pVidasJugador = document.querySelector("#vidas-jugador");
@@ -27,10 +27,8 @@ const pVidasEnemigo = document.querySelector("#vidas-enemigo");
 const pAtaqueJugador = document.querySelector("#ataque-jugador");
 const pAtaqueEnemigo = document.querySelector("#ataque-enemigo");
 
-const spanVidasJugador = document.querySelector("#vidas-jugador");
-const spanVidasEnemigo = document.querySelector('#vidas-enemigo');
-
 const sectionMessage = document.querySelector("#mensaje-final");
+const contenedorTarjetas = document.querySelector("#contenedorTarjetas");
 
 class Mokepon{
     constructor(nombre, foto, vida){
@@ -100,6 +98,22 @@ mokepones.push(hipodoge,capipego,ratigueya,langostelvis,tucapalma,pydos);
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = "none"; 
     seccionReiniciar.style.display = "none";
+
+    mokepones.forEach((mokepon)=>{
+        listaMokepones =`<input type="radio" name="mascota" id="${mokepon.nombre}"/>
+        <label for="${mokepon.nombre}" class="tarjeta-de-mokepon">
+        <p>${mokepon.nombre}</p>
+        <img src="${mokepon.foto}" alt="${mokepon.nombre}">
+        </label>`
+        contenedorTarjetas.innerHTML += listaMokepones;
+        inputHipodoge = document.querySelector("#Hipodoge");
+        inputCapipego = document.querySelector("#Capipego");
+        inputRatigueya = document.querySelector("#Ratigueya");
+        inputLangostelvis = document.querySelector("#Langostelvis");
+        inputTucapalma = document.querySelector("#Tucapalma");
+        inputPydos = document.querySelector("#Pydos");
+    });
+
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
     botonFuego.addEventListener("click", ataqueFuego);
     botonAgua.addEventListener("click", ataqueAgua);
@@ -109,35 +123,47 @@ function iniciarJuego(){
 
 function seleccionarMascotaJugador(){
     if(inputHipodoge.checked){
-        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Hipodoge"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + hipodoge.nombre;
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         sectionSeleccionarAtaque.style.display = "Flex";
+        vidasJugador = hipodoge.vida;
+        pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
     } else if(inputCapipego.checked){
-        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Capipego"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + capipego.nombre;
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         sectionSeleccionarAtaque.style.display = "Flex";
+        vidasJugador = capipego.vida;
+        pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
     } else if(inputRatigueya.checked){
-        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Ratigueya"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + ratigueya.nombre;
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         sectionSeleccionarAtaque.style.display = "Flex";
+        vidasJugador = ratigueya.vida;
+        pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
     } else if(inputLangostelvis.checked){
-        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Langostelvis"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + langostelvis.nombre;
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         sectionSeleccionarAtaque.style.display = "Flex";
+        vidasJugador = langostelvis.vida;
+        pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
     } else if(inputTucapalma.checked){
-        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Tucapalma"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + tucapalma.vida;
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         sectionSeleccionarAtaque.style.display = "Flex";
+        vidasJugador = tucapalma.vida;
+        pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
     } else if(inputPydos.checked){
-        spanMascotaJugador.innerHTML = "Tu Mascota: " + "Pydos"
+        spanMascotaJugador.innerHTML = "Tu Mascota: " + pydos.vida;
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         sectionSeleccionarAtaque.style.display = "Flex";
+        vidasJugador = pydos.vida;
+        pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
     } else {
         alert("No has seleccionado ningun Mokepon");
     }
@@ -145,17 +171,11 @@ function seleccionarMascotaJugador(){
 
 function seleccionarMascotaEnemigo(){
     let spanMascotaEnemigo = document.querySelector("#mascota-enemigo");
-    let jsonMokemon = {
-        1: "Hipodoge",
-        2: "Capipego",
-        3: "Ratigueya",
-        4: "Langostelvis",
-        5: "Tucapalma",
-        6: "Pydos",
-    }
-    let randomNumber = aleatorio(1,6);
+    let randomNumber = aleatorio(0,mokepones.length);
 
-    spanMascotaEnemigo.innerHTML = "La Mascota de tu Enemigo: " + jsonMokemon[randomNumber];
+    spanMascotaEnemigo.innerHTML = "La Mascota de tu Enemigo: " + mokepones[randomNumber].nombre;
+    vidasEnemigo = mokepones[randomNumber].vida;
+    pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
 }
 
 function aleatorio(min, max){
@@ -198,14 +218,11 @@ function crearMensaje(){
     pAtaqueEnemigo.innerHTML = ataqueEnemigo;
 }
 
-/*function crearMensaje(resultadoBatalla){
-    let  parrafo = document.createElement("p");
-    let sectionMessage = document.querySelector("#mensajes");
+function crearMensaje(resultadoBatalla){
+    let resultadoCombate = document.querySelector("#resultadoCombate");
 
-    parrafo.innerHTML = "Tu mascota atacó con "+ ataqueJugador + ". La mascota de tu enemigo ataco con " + ataqueEnemigo + " - " + resultadoBatalla;
-
-    sectionMessage.appendChild(parrafo);
-}*/
+    resultadoCombate.innerHTML = resultadoBatalla;
+}
 
 function crearMensajeFinal(resultadoFinal){
     //let  parrafo = document.createElement("p");
@@ -219,23 +236,23 @@ function crearMensajeFinal(resultadoFinal){
 
 function combate(){
     if(ataqueEnemigo==ataqueJugador){
-        crearMensaje("Empate");
+        crearMensaje("Empate 🔁");
     } else if(ataqueJugador == "Fuego" && ataqueEnemigo == "Tierra"){
-        crearMensaje("Ganaste");
+        crearMensaje("Ganaste 🥳");
         vidasEnemigo--;
-        spanVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
+        pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
     } else if(ataqueJugador == "Agua" && ataqueEnemigo == "Fuego"){
-        crearMensaje("Ganaste");
+        crearMensaje("Ganaste 🥳");
         vidasEnemigo--;
-        spanVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
+        pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
     } else if(ataqueJugador == "Tierra" && ataqueEnemigo == "Agua"){
-        crearMensaje("Ganaste");
+        crearMensaje("Ganaste 🥳");
         vidasEnemigo--;
-        spanVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
+        pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
     } else {
-        crearMensaje("Perdiste");
+        crearMensaje("Perdiste😪");
         vidasJugador--;
-        spanVidasJugador.innerHTML = "Vidas: " + vidasJugador;
+        pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
     }
 
     revisarVidas(vidasEnemigo, vidasJugador);

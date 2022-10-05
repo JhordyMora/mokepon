@@ -12,8 +12,8 @@
     
     <section id="seleccionar-mascota">
         <h2 class="subtitulo">Elige a tu mascota:</h2>
-        <div class="tarjetas">
-            
+        <div id="contenedorTarjetas" class="tarjetas">
+            <!--
             <input type="radio" name="mascota" id="hipodoge"/>
             <label for="hipodoge" class="tarjeta-de-mokepon">
                 <p>Hipodoge</p>
@@ -48,7 +48,7 @@
             <label for="pydos" class="tarjeta-de-mokepon">
                 <p>Pydos</p>
                 <img src="./assets/Funny-orange-monster-on-transparent-PNG.png" alt="Pydos">
-            </label>
+            </label>-->
         </div>
         
         <button id="btn-mascota">Seleccionar</button>
@@ -56,12 +56,12 @@
 
     <section id="seleccionar-ataque">
         <h2>Elige tu ataque:</h2>
-        
         <div id="botones">
             <button id="btn-fuego" class="ataques">Fuego!🔥</button>
             <button id="btn-agua" class="ataques">Agua!💧</button>
             <button id="btn-tierra" class="ataques">Tierra!🌱</button>
             <br>
+            <p id="resultadoCombate">Preparate para luchar!</p>
             <span id="mensaje-final"></span>
             <section id="reiniciar">
                 <button id="btn-reiniciar">Reiniciar</button>
@@ -70,12 +70,12 @@
         
         <div id="ataques">
             <div>
-                <p id="vidas-jugador">Vidas: 3</p>
+                <p id="vidas-jugador">Vidas:</p>
                 <p id="mascota-jugador"></p>
                 <p id="ataque-jugador"></p>
             </div>
             <div>
-                <p id="vidas-enemigo">Vidas: 3</p>
+                <p id="vidas-enemigo">Vidas:</p>
                 <p id="mascota-enemigo"></p>
                 <p id="ataque-enemigo"></p>
             </div>
