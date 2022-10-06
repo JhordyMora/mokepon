@@ -14,9 +14,9 @@ let inputTucapalma;
 let inputPydos;
 let ataquesMokemonJugador = [];
 let ataquesMokemonEnemigo = [];
-let botonFuego;// = document.querySelector("#btn-fuego");
-let botonAgua;// = document.querySelector("#btn-agua");
-let botonTierra;// = document.querySelector("#btn-tierra");
+let botonFuego;
+let botonAgua;
+let botonTierra;
 
 const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
 const seccionReiniciar = document.querySelector("#reiniciar");
@@ -238,9 +238,7 @@ function crearMensaje(resultadoBatalla){
 }
 
 function crearMensajeFinal(resultadoFinal){
-    //let  parrafo = document.createElement("p");
     sectionMessage.innerHTML = resultadoFinal ;
-    //sectionMessage.appendChild(parrafo);
     if(ataquesMokemonJugador.includes("btn-fuego")){
         botonFuego.disabled = true;        
     }
