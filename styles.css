@@ -105,14 +105,14 @@ input{
     border: 2px solid;
     font-family: 'Bungee Spice', cursive;
     font-size: large;
-    margin: 20px 0px 0px 0px;
+    margin: 0px 0px 20px 0px;
 }
 
 #ataques{
     display: grid;
     grid-template-columns: 150px 150px;
     background: white;
-    border: 10px solid black;
+    border: 5px solid black;
     padding: 20px;
 }
 
@@ -128,11 +128,18 @@ input{
 #mensaje-final{
     display: flex;
     justify-content: center;
-    margin-top: 30px;
 }
 
 @media (max-width: 1000px) {
-    .tarjetas, #botones{
+    .tarjetas{
+        display: grid;
+        /* width: 95%; */
+        grid-template-columns: 50% 50%;
+        /*align-items: center;
+        justify-content: center;*/
+    }
+
+    #botones{
         display: flex;
         flex-direction: column;
         align-items: center;      

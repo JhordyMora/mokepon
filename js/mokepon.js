@@ -238,7 +238,12 @@ function crearMensaje(resultadoBatalla){
 }
 
 function crearMensajeFinal(resultadoFinal){
-    sectionMessage.innerHTML = resultadoFinal ;
+    sectionMessage.style.border = "5px solid black";
+    sectionMessage.style.padding = "10px 0px 10px 0px";
+    sectionMessage.style.backgroundColor = "#FEF5AC";
+    sectionMessage.style.marginTop = "30px";
+    sectionMessage.innerHTML = resultadoFinal;
+
     if(ataquesMokemonJugador.includes("btn-fuego")){
         botonFuego.disabled = true;        
     }
@@ -277,9 +282,9 @@ function combate(){
 
 function revisarVidas(vidasEnemigo, vidasJugador){
     if(vidasEnemigo==0){
-        crearMensajeFinal("Muy bien!! Ganaste :D");
+        crearMensajeFinal("Muy bien!! Ganaste 🥳🎈🥇");
     } else if (vidasJugador ==0){
-        crearMensajeFinal("Ohh que mal! Perdiste :(");
+        crearMensajeFinal("Ohh que mal! Perdiste 😪😣😢");
     }
 }
 
