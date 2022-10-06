@@ -50,11 +50,11 @@ let capipego = new Mokepon("Capipego","./assets/mokepons_mokepon_capipepo_attack
 
 let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png",5);
 
-let langostelvis = new Mokepon("Langostelvis","./assets/2001.i203.007_cartoon_monster_set-11.jpg",5);
+let langostelvis = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png",5);
 
-let tucapalma = new Mokepon("Tucapalma","./assets/58_03.jpg",5);
+let tucapalma = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png",5);
 
-let pydos = new Mokepon("Pydos","./assets/Funny-orange-monster-on-transparent-PNG.png",5);
+let pydos = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png",5);
 
 hipodoge.ataques.push(
     {nombre: "🔥", id: "btn-fuego"},
