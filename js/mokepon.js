@@ -38,6 +38,8 @@ let botonAgua;
 let botonTierra;
 let lienzo = mapa.getContext("2d");
 let intervalo;
+let mapaBackground = new Image();
+mapaBackground.src = "/assets/mokemap.png"
 
 
 class Mokepon{
@@ -130,7 +132,7 @@ function iniciarJuego(){
 
 function seleccionarMascotaJugador(){
     // setInterval function dice que cada vez que la funcion pintar este activa (pq tenemos oprimido el raton sin soltarlo), se repetira la funcion cada 50 milisegundos
-    intervalo = setInterval(pintarPersonaje, 50);
+    intervalo = setInterval(pintarPersonajeYCanvas, 50);
     window.addEventListener("keydown",sePresionoUnaTecla);
     window.addEventListener("keyup",detenerMov);
 
@@ -142,7 +144,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        pintarPersonaje();
+        pintarPersonajeYCanvas();
     } else if(inputCapipego.checked){
         mokemonJugador = capipego;
         setStatsBottonsPlayer(mokemonJugador);
@@ -150,7 +152,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        pintarPersonaje();
+        pintarPersonajeYCanvas();
     } else if(inputRatigueya.checked){
         mokemonJugador = ratigueya;
         setStatsBottonsPlayer(mokemonJugador);
@@ -158,7 +160,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        pintarPersonaje();
+        pintarPersonajeYCanvas();
     } else if(inputLangostelvis.checked){
         mokemonJugador = langostelvis;
         setStatsBottonsPlayer(mokemonJugador);
@@ -166,7 +168,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        pintarPersonaje();
+        pintarPersonajeYCanvas();
     } else if(inputTucapalma.checked){
         mokemonJugador = tucapalma;
         setStatsBottonsPlayer(mokemonJugador);
@@ -174,7 +176,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        pintarPersonaje();
+        pintarPersonajeYCanvas();
     } else if(inputPydos.checked){
         mokemonJugador = pydos;
         setStatsBottonsPlayer(mokemonJugador);
@@ -182,7 +184,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        pintarPersonaje();
+        pintarPersonajeYCanvas();
     } else {
         alert("No has seleccionado ningun Mokepon");
     }
@@ -324,10 +326,17 @@ function reiniciarJuego(){
     location.reload();
 }
 
-function pintarPersonaje(){
+function pintarPersonajeYCanvas(){
     mokemonJugador.x = mokemonJugador.x + mokemonJugador.velocidadX;
     mokemonJugador.y = mokemonJugador.y + mokemonJugador.velocidadY;
     lienzo.clearRect(0,0,mapa.width, mapa.height);
+    lienzo.drawImage(
+        mapaBackground,
+        0,
+        0,
+        mapa.width,
+        mapa.height
+    )
     lienzo.drawImage(
         mokemonJugador.mapaFoto,
         mokemonJugador.x,
@@ -361,16 +370,16 @@ function detenerMov(){
 function sePresionoUnaTecla(e){
     if(e.code=="ArrowUp"){
         moverMokeponArriba();
-        pintarPersonaje();
+        pintarPersonajeYCanvas();
     } else if (e.code=="ArrowDown"){
         moverMokeponAbajo();
-        pintarPersonaje();
+        pintarPersonajeYCanvas();
     } else if (e.code=="ArrowRight"){
         moverMokeponDerecha();
-        pintarPersonaje();
+        pintarPersonajeYCanvas();
     } else if (e.code=="ArrowLeft"){
         moverMokeponIzquierda();
-        pintarPersonaje();
+        pintarPersonajeYCanvas();
     }
 }
 window.addEventListener("load", iniciarJuego);

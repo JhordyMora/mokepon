@@ -77,8 +77,8 @@ input{
 }
 
 #mapa{
-    width: 800px;
-    height: 600px;
+    width: 75%;
+    height: 60%;
     border: 2px solid black;
     background-color: white;
 }
