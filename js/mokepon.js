@@ -329,6 +329,7 @@ function reiniciarJuego(){
 function pintarPersonajeYCanvas(){
     mokemonJugador.x = mokemonJugador.x + mokemonJugador.velocidadX;
     mokemonJugador.y = mokemonJugador.y + mokemonJugador.velocidadY;
+
     lienzo.clearRect(0,0,mapa.width, mapa.height);
     lienzo.drawImage(
         mapaBackground,
@@ -347,19 +348,42 @@ function pintarPersonajeYCanvas(){
 }
 
 function moverMokeponDerecha(){
-    mokemonJugador.velocidadX = 5;
+    if(mokemonJugador.x < mapa.width-80){
+        mokemonJugador.velocidadX = 2;
+        //console.log(`ancho mapa: ${mapa.width}`);
+        //console.log(`posicion moke: ${mokemonJugador.x}`);
+        //console.log(`tamanho pixeles foto moke: ${mokemonJugador.mapaFoto.width}`);
+        //mejorar para que se pare cuando llegue en le borde se pare
+    } else {
+        detenerMov();
+    }
 }
 
 function moverMokeponIzquierda(){
-    mokemonJugador.velocidadX -= 5;
+    if(mokemonJugador.x > 4){
+        mokemonJugador.velocidadX = -2;
+        // mejorar para que se pare cuando llegue en le borde se pare
+    } else {
+        detenerMov();
+    }
 }
 
 function moverMokeponArriba(){
-    mokemonJugador.velocidadY -= 5;
+    if(mokemonJugador.y > 0){
+        mokemonJugador.velocidadY = -2;
+        //mejorar para que se pare cuando llegue en le borde se pare
+    } else {
+        detenerMov();
+    }
 }
 
 function moverMokeponAbajo(){
-    mokemonJugador.velocidadY += 5;
+    if(mokemonJugador.y < mapa.height - 80){
+        mokemonJugador.velocidadY = 2;
+        //mejorar para que se pare cuando llegue en le borde se pare
+    } else {
+        detenerMov();
+    }
 }
 
 function detenerMov(){
