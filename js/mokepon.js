@@ -1,3 +1,22 @@
+const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
+const seccionReiniciar = document.querySelector("#reiniciar");
+const botonMascotaJugador = document.querySelector("#btn-mascota");
+const botonReiniciar = document.querySelector("#btn-reiniciar");
+
+const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota');
+const spanMascotaJugador = document.querySelector("#mascota-jugador");
+
+const pVidasJugador = document.querySelector("#vidas-jugador");
+const pVidasEnemigo = document.querySelector("#vidas-enemigo");
+const pAtaqueJugador = document.querySelector("#ataque-jugador");
+const pAtaqueEnemigo = document.querySelector("#ataque-enemigo");
+
+const sectionMessage = document.querySelector("#mensaje-final");
+const contenedorTarjetas = document.querySelector("#contenedorTarjetas");
+const ataqueSection = document.querySelector("#botones");
+const sectionVerMapa = document.querySelector("#ver-mapa");
+const mapa = document.querySelector("#mapa");
+
 let mokepones = [];
 let mokemonJugador;
 let mokemonEnemigo;
@@ -17,23 +36,9 @@ let ataquesMokemonEnemigo = [];
 let botonFuego;
 let botonAgua;
 let botonTierra;
+let lienzo = mapa.getContext("2d");
+let intervalo;
 
-const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
-const seccionReiniciar = document.querySelector("#reiniciar");
-const botonMascotaJugador = document.querySelector("#btn-mascota");
-const botonReiniciar = document.querySelector("#btn-reiniciar");
-
-const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota');
-const spanMascotaJugador = document.querySelector("#mascota-jugador");
-
-const pVidasJugador = document.querySelector("#vidas-jugador");
-const pVidasEnemigo = document.querySelector("#vidas-enemigo");
-const pAtaqueJugador = document.querySelector("#ataque-jugador");
-const pAtaqueEnemigo = document.querySelector("#ataque-enemigo");
-
-const sectionMessage = document.querySelector("#mensaje-final");
-const contenedorTarjetas = document.querySelector("#contenedorTarjetas");
-const ataqueSection = document.querySelector("#botones");
 
 class Mokepon{
     constructor(nombre, foto, vida){
@@ -41,6 +46,14 @@ class Mokepon{
         this.foto=foto;
         this.vida = vida;
         this.ataques=[];
+        this.x = 20;
+        this.y = 30;
+        this.ancho = 80;
+        this.alto = 80;
+        this.mapaFoto = new Image();
+        this.mapaFoto.src = foto;
+        this.velocidadX = 0;
+        this.velocidadY = 0;
     }
 }
 
@@ -94,6 +107,7 @@ mokepones.push(hipodoge,capipego,ratigueya,langostelvis,tucapalma,pydos);
 function iniciarJuego(){
     sectionSeleccionarAtaque.style.display = "none"; 
     seccionReiniciar.style.display = "none";
+    sectionVerMapa.style.display = "none";
 
     mokepones.forEach((mokepon)=>{
         listaMokepones =`<input type="radio" name="mascota" id="${mokepon.nombre}"/>
@@ -115,42 +129,60 @@ function iniciarJuego(){
 }
 
 function seleccionarMascotaJugador(){
+    // setInterval function dice que cada vez que la funcion pintar este activa (pq tenemos oprimido el raton sin soltarlo), se repetira la funcion cada 50 milisegundos
+    intervalo = setInterval(pintarPersonaje, 50);
+    window.addEventListener("keydown",sePresionoUnaTecla);
+    window.addEventListener("keyup",detenerMov);
+
     if(inputHipodoge.checked){
         mokemonJugador = hipodoge;
+        // I think i can delete the parameter hier bcs we have a globar variable -> mokemon jugador
         setStatsBottonsPlayer(mokemonJugador);
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
-        sectionSeleccionarAtaque.style.display = "Flex";
+        //sectionSeleccionarAtaque.style.display = "Flex";
+        sectionVerMapa.style.display = "flex";
+        pintarPersonaje();
     } else if(inputCapipego.checked){
         mokemonJugador = capipego;
         setStatsBottonsPlayer(mokemonJugador);
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
-        sectionSeleccionarAtaque.style.display = "Flex";
+        //sectionSeleccionarAtaque.style.display = "Flex";
+        sectionVerMapa.style.display = "flex";
+        pintarPersonaje();
     } else if(inputRatigueya.checked){
         mokemonJugador = ratigueya;
         setStatsBottonsPlayer(mokemonJugador);
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
-        sectionSeleccionarAtaque.style.display = "Flex";
+        //sectionSeleccionarAtaque.style.display = "Flex";
+        sectionVerMapa.style.display = "flex";
+        pintarPersonaje();
     } else if(inputLangostelvis.checked){
         mokemonJugador = langostelvis;
         setStatsBottonsPlayer(mokemonJugador);
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
-        sectionSeleccionarAtaque.style.display = "Flex";
+        //sectionSeleccionarAtaque.style.display = "Flex";
+        sectionVerMapa.style.display = "flex";
+        pintarPersonaje();
     } else if(inputTucapalma.checked){
         mokemonJugador = tucapalma;
         setStatsBottonsPlayer(mokemonJugador);
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
-        sectionSeleccionarAtaque.style.display = "Flex";
+        //sectionSeleccionarAtaque.style.display = "Flex";
+        sectionVerMapa.style.display = "flex";
+        pintarPersonaje();
     } else if(inputPydos.checked){
         mokemonJugador = pydos;
         setStatsBottonsPlayer(mokemonJugador);
         seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
-        sectionSeleccionarAtaque.style.display = "Flex";
+        //sectionSeleccionarAtaque.style.display = "Flex";
+        sectionVerMapa.style.display = "flex";
+        pintarPersonaje();
     } else {
         alert("No has seleccionado ningun Mokepon");
     }
@@ -292,4 +324,53 @@ function reiniciarJuego(){
     location.reload();
 }
 
+function pintarPersonaje(){
+    mokemonJugador.x = mokemonJugador.x + mokemonJugador.velocidadX;
+    mokemonJugador.y = mokemonJugador.y + mokemonJugador.velocidadY;
+    lienzo.clearRect(0,0,mapa.width, mapa.height);
+    lienzo.drawImage(
+        mokemonJugador.mapaFoto,
+        mokemonJugador.x,
+        mokemonJugador.y,
+        mokemonJugador.ancho,
+        mokemonJugador.alto
+    );
+}
+
+function moverMokeponDerecha(){
+    mokemonJugador.velocidadX = 5;
+}
+
+function moverMokeponIzquierda(){
+    mokemonJugador.velocidadX -= 5;
+}
+
+function moverMokeponArriba(){
+    mokemonJugador.velocidadY -= 5;
+}
+
+function moverMokeponAbajo(){
+    mokemonJugador.velocidadY += 5;
+}
+
+function detenerMov(){
+    mokemonJugador.velocidadY = 0;
+    mokemonJugador.velocidadX = 0;
+}
+
+function sePresionoUnaTecla(e){
+    if(e.code=="ArrowUp"){
+        moverMokeponArriba();
+        pintarPersonaje();
+    } else if (e.code=="ArrowDown"){
+        moverMokeponAbajo();
+        pintarPersonaje();
+    } else if (e.code=="ArrowRight"){
+        moverMokeponDerecha();
+        pintarPersonaje();
+    } else if (e.code=="ArrowLeft"){
+        moverMokeponIzquierda();
+        pintarPersonaje();
+    }
+}
 window.addEventListener("load", iniciarJuego);
