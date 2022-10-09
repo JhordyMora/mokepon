@@ -1,4 +1,9 @@
 // hacer las imagenes mas pequenhas
+// hacer mapa y demaas cosas responsive
+// en mokepon poner alli las ubicaciones aleatoria y mejor modificar la posicion del mokepon del jugador luego de crearlo
+// poner estilo botones y mejor organizacion
+// mejorar los responsive
+// investigar que es viewport - este viene ya por default en el html tag the vs code pero si no es muy importanta para que las cosas sean responsive. escribir el one note
 const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
 const seccionReiniciar = document.querySelector("#reiniciar");
 const botonMascotaJugador = document.querySelector("#btn-mascota");
