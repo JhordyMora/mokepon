@@ -1,6 +1,4 @@
-// hacer lista de enemigos 
-//hacer una cantidad random de enemigos
-// poblar el mapa con enemigos
+// hacer las imagenes mas pequenhas
 const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
 const seccionReiniciar = document.querySelector("#reiniciar");
 const botonMascotaJugador = document.querySelector("#btn-mascota");
@@ -154,9 +152,9 @@ function seleccionarMascotaJugador(){
 
     if(inputHipodoge.checked){
         mokemonJugador = hipodoge;
-        // I think i can delete the parameter hier bcs we have a globar variable -> mokemon jugador
+        // I think i can delete the parameter hier bcs we have a globa variable -> mokemon jugador
         setStatsBottonsPlayer(mokemonJugador);
-        seleccionarMascotaEnemigo();
+        //seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
@@ -165,7 +163,7 @@ function seleccionarMascotaJugador(){
     } else if(inputCapipego.checked){
         mokemonJugador = capipego;
         setStatsBottonsPlayer(mokemonJugador);
-        seleccionarMascotaEnemigo();
+        //seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
@@ -174,7 +172,7 @@ function seleccionarMascotaJugador(){
     } else if(inputRatigueya.checked){
         mokemonJugador = ratigueya;
         setStatsBottonsPlayer(mokemonJugador);
-        seleccionarMascotaEnemigo();
+        //seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
@@ -183,7 +181,7 @@ function seleccionarMascotaJugador(){
     } else if(inputLangostelvis.checked){
         mokemonJugador = langostelvis;
         setStatsBottonsPlayer(mokemonJugador);
-        seleccionarMascotaEnemigo();
+        //seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
@@ -192,7 +190,7 @@ function seleccionarMascotaJugador(){
     } else if(inputTucapalma.checked){
         mokemonJugador = tucapalma;
         setStatsBottonsPlayer(mokemonJugador);
-        seleccionarMascotaEnemigo();
+        //seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
@@ -201,7 +199,7 @@ function seleccionarMascotaJugador(){
     } else if(inputPydos.checked){
         mokemonJugador = pydos;
         setStatsBottonsPlayer(mokemonJugador);
-        seleccionarMascotaEnemigo();
+        //seleccionarMascotaEnemigo();
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
@@ -235,10 +233,10 @@ function setStatsBottonsPlayer(mokemonJugador){
     }
 }
 
-function seleccionarMascotaEnemigo(){
+function seleccionarMascotaEnemigo(mokemonEnemigo){
     let spanMascotaEnemigo = document.querySelector("#mascota-enemigo");
-    let randomNumber = aleatorio(0,mokepones.length-1);
-    mokemonEnemigo = mokepones[randomNumber];
+    //let randomNumber = aleatorio(0,mokepones.length-1);
+    //mokemonEnemigo = mokepones[randomNumber];
     spanMascotaEnemigo.innerHTML = "La Mascota de tu Enemigo: " + mokemonEnemigo.nombre;
     vidasEnemigo = mokemonEnemigo.vida;
     pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
@@ -427,6 +425,21 @@ function pintarCanvas(){
     for(mokemon of mokemonesEnemigosLista){
         mokemon.pintarMokemon();
     }
+
+    if( mokemonJugador.velocidadX !=0 ||
+        mokemonJugador.velocidadY !=0
+        ){
+            for(mokemonEnemigo of mokemonesEnemigosLista){
+                isCollision =revisarColision(mokemonEnemigo, mokemonJugador);
+
+                if(isCollision){
+                    sectionVerMapa.style.display = "none";
+                    seleccionarMascotaEnemigo(mokemonEnemigo);
+                    sectionSeleccionarAtaque.style.display = "Flex";
+                }
+            }
+
+    }
 }
 
 function moverMokeponDerecha(){
@@ -488,4 +501,29 @@ function sePresionoUnaTecla(e){
         pintarCanvas();
     }
 }
+
+function revisarColision(enemigo, mokemonJugador){
+    const arribaEnemigo = enemigo.x ; 
+    const abajoEnemigo = enemigo.x + enemigo.alto ;
+    const izquierdaEnemigo = enemigo.y ;
+    const derechaEnemigo = enemigo.y +enemigo.ancho ;
+
+    const arribaMascota = mokemonJugador.x ; 
+    const abajoMascota = mokemonJugador.x + mokemonJugador.alto ;
+    const izquierdaMascota = mokemonJugador.y ;
+    const derechaMascota = mokemonJugador.y + mokemonJugador.ancho ;
+
+    if(
+        abajoMascota < arribaEnemigo ||
+        arribaMascota > abajoEnemigo ||
+        derechaMascota < izquierdaEnemigo ||
+        izquierdaMascota > derechaEnemigo
+    ){
+       return false;
+    }
+
+    detenerMov();   
+    return true;
+}
+
 window.addEventListener("load", iniciarJuego);
