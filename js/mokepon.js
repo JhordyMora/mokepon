@@ -54,8 +54,8 @@ class Mokepon{
         this.ataques=[];
         this.x = x;
         this.y = y;
-        this.ancho = 80;
-        this.alto = 80;
+        this.ancho = 60;
+        this.alto = 60;
         this.mapaFoto = new Image();
         this.mapaFoto.src = mokeFaceMap;
         this.velocidadX = 0;
@@ -145,11 +145,6 @@ function iniciarJuego(){
 }
 
 function seleccionarMascotaJugador(){
-    // setInterval function dice que cada vez que la funcion pintar este activa (pq tenemos oprimido el raton sin soltarlo), se repetira la funcion cada 50 milisegundos
-    intervalo = setInterval(pintarCanvas, 50);
-    window.addEventListener("keydown",sePresionoUnaTecla);
-    window.addEventListener("keyup",detenerMov);
-
     if(inputHipodoge.checked){
         mokemonJugador = hipodoge;
         // I think i can delete the parameter hier bcs we have a globa variable -> mokemon jugador
@@ -159,7 +154,7 @@ function seleccionarMascotaJugador(){
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
         selectionEnemiesForMap();
-        pintarCanvas();
+        iniciarMapa();
     } else if(inputCapipego.checked){
         mokemonJugador = capipego;
         setStatsBottonsPlayer(mokemonJugador);
@@ -168,7 +163,7 @@ function seleccionarMascotaJugador(){
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
         selectionEnemiesForMap();
-        pintarCanvas();
+        iniciarMapa();
     } else if(inputRatigueya.checked){
         mokemonJugador = ratigueya;
         setStatsBottonsPlayer(mokemonJugador);
@@ -177,7 +172,7 @@ function seleccionarMascotaJugador(){
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
         selectionEnemiesForMap();
-        pintarCanvas();
+        iniciarMapa();
     } else if(inputLangostelvis.checked){
         mokemonJugador = langostelvis;
         setStatsBottonsPlayer(mokemonJugador);
@@ -186,7 +181,7 @@ function seleccionarMascotaJugador(){
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
         selectionEnemiesForMap();
-        pintarCanvas();
+        iniciarMapa();
     } else if(inputTucapalma.checked){
         mokemonJugador = tucapalma;
         setStatsBottonsPlayer(mokemonJugador);
@@ -195,7 +190,7 @@ function seleccionarMascotaJugador(){
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
         selectionEnemiesForMap();
-        pintarCanvas();
+        iniciarMapa();
     } else if(inputPydos.checked){
         mokemonJugador = pydos;
         setStatsBottonsPlayer(mokemonJugador);
@@ -204,7 +199,7 @@ function seleccionarMascotaJugador(){
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
         selectionEnemiesForMap();
-        pintarCanvas();
+        iniciarMapa();
     } else {
         alert("No has seleccionado ningun Mokepon");
     }
@@ -409,11 +404,20 @@ function reiniciarJuego(){
     location.reload();
 }
 
+function iniciarMapa(){
+    // setInterval function dice que cada vez que la funcion pintar este activa (pq tenemos oprimido el raton sin soltarlo), se repetira la funcion cada 50 milisegundos
+    intervalo = setInterval(pintarCanvas, 50);
+    window.addEventListener("keydown",sePresionoUnaTecla);
+    window.addEventListener("keyup",detenerMov);
+}
+
 function pintarCanvas(){
     mokemonJugador.x = mokemonJugador.x + mokemonJugador.velocidadX;
     mokemonJugador.y = mokemonJugador.y + mokemonJugador.velocidadY;
 
-    lienzo.clearRect(0,0,mapa.width, mapa.height);
+    mapa.width = 320;
+    mapa.height = 240;
+
     lienzo.drawImage(
         mapaBackground,
         0,
