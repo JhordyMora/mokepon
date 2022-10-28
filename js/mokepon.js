@@ -144,9 +144,15 @@ function iniciarJuego(){
         inputTucapalma = document.querySelector("#Tucapalma");
         inputPydos = document.querySelector("#Pydos");
     });
-
+    
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
     botonReiniciar.addEventListener("click", reiniciarJuego);
+    unirseAlJuegoBackEnd();
+}
+
+function unirseAlJuegoBackEnd(){
+    fetch("http://localhost:8080/unirse")
+        .then((res)=>{console.log(res);})
 }
 
 function seleccionarMascotaJugador(){
