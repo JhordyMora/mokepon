@@ -156,8 +156,8 @@ function unirseAlJuegoBackEnd(){
                 console.log(res);
                 if(res.ok){
                     res.text()
-                        .then(function(respuesta){
-                                console.log(respuesta)
+                        .then(function(data){
+                                console.log(data)
                             }
                         )
                 }
