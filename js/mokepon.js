@@ -152,7 +152,17 @@ function iniciarJuego(){
 
 function unirseAlJuegoBackEnd(){
     fetch("http://localhost:8080/unirse")
-        .then((res)=>{console.log(res);})
+        .then(function(res){
+                console.log(res);
+                if(res.ok){
+                    res.text()
+                        .then(function(respuesta){
+                                console.log(respuesta)
+                            }
+                        )
+                }
+            }
+        )
 }
 
 function seleccionarMascotaJugador(){
