@@ -10,6 +10,10 @@ class Jugador{
     constructor(id){
         this.id = id;
     }
+
+    asignarMokepon(mokepon){
+        this.mokepon = mokepon;
+    }
 }
 
 class Mokepon{
@@ -20,9 +24,10 @@ class Mokepon{
 
 app.post("/mokepon/:jugadorId", (req, res)=>{
         const jugadorId = req.params.jugadorId || "";
+        const nombreMoke = req.body.mokepon || "";
         console.log(jugadores);
         console.log(jugadorId);
-        console.log(mokemonJugador);
+        console.log(nombreMoke);
         res.end();
     }
 )
