@@ -26,17 +26,16 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
         const jugadorId = req.params.jugadorId || "";
         const mokemon = req.body.mokepon || "";
         const mokemonBackEnd = new Mokepon(mokemon.nombre);
-        console.log(jugadores);
-        console.log(jugadorId);
-        console.log(mokemon.nombre);
         for(jugador of jugadores){
             if(jugador.id === jugadorId){
                 jugador.asignarMokepon(mokemonBackEnd);
             } else {
                 console.log("Jugador no encontrado");
             }
-
+            
         }
+        console.log(jugadores);
+        console.log(jugadorId);
         res.end();
     }
 )
