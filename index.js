@@ -22,6 +22,7 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
         const jugadorId = req.params.jugadorId || "";
         console.log(jugadores);
         console.log(jugadorId);
+        console.log(mokemonJugador);
         res.end();
     }
 )

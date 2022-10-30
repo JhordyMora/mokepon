@@ -226,6 +226,7 @@ function seleccionarMascotaJugador(){
     } else {
         alert("No has seleccionado ningun Mokepon");
     }
+    //console.log(mokemonJugador);
     mokemonJugadorBackEnd(mokemonJugador); // seleccionarMokepon();
 }
 
