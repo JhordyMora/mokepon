@@ -29,6 +29,14 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
         console.log(jugadores);
         console.log(jugadorId);
         console.log(mokemon.nombre);
+        for(jugador of jugadores){
+            if(jugador.id === jugadorId){
+                jugador.asignarMokepon(mokemonBackEnd);
+            } else {
+                console.log("Jugador no encontrado");
+            }
+
+        }
         res.end();
     }
 )
