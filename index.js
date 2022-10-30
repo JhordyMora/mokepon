@@ -12,6 +12,12 @@ class Jugador{
     }
 }
 
+class Mokepon{
+    constructor(nombre){
+        this.nombre = nombre;
+    }
+}
+
 app.post("/mokepon/:jugadorId", (req, res)=>{
         const jugadorId = req.params.jugadorId || "";
         console.log(jugadores);
@@ -25,7 +31,7 @@ app.get("/unirse", (req,res)=>{
         const jugador = new Jugador(id);
         jugadores.push(jugador);
         res.setHeader("Access-Control-Allow-Origin", "*");
-        console.log(req);
+        //console.log(req);
         res.send(jugador.id);
     }
 )

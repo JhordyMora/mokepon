@@ -331,7 +331,7 @@ function selectionEnemiesForMap(){
         mokemonesEnemigosLista[i].x = randomPositionMokeX[i];
         mokemonesEnemigosLista[i].y = randomPositionMokeY[i];
     }
-    console.log(mokemonesEnemigosLista);
+    //console.log(mokemonesEnemigosLista);
 }
 
 function randomPositionEnemiesMoke(randomNumberOfEnemiesMap){
