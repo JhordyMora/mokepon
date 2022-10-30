@@ -24,10 +24,11 @@ class Mokepon{
 
 app.post("/mokepon/:jugadorId", (req, res)=>{
         const jugadorId = req.params.jugadorId || "";
-        const nombreMoke = req.body.mokepon || "";
+        const mokemon = req.body.mokepon || "";
+        const mokemonBackEnd = new Mokepon(mokemon.nombre);
         console.log(jugadores);
         console.log(jugadorId);
-        console.log(nombreMoke);
+        console.log(mokemon.nombre);
         res.end();
     }
 )
