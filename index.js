@@ -13,7 +13,7 @@ class Jugador{
 }
 
 app.post("/mokepon/:jugadorId", (req, res)=>{
-        const jugadorId = req.params.jugadorId;
+        const jugadorId = req.params.jugadorId || "";
         console.log(jugadores);
         console.log(jugadorId);
         res.end();
@@ -21,7 +21,7 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
 )
 
 app.get("/unirse", (req,res)=>{
-        const id = `Tu id es el siguiente: ${Math.round(Math.random()*100)}`;
+        const id = `${Math.round(Math.random()*100)}`;
         const jugador = new Jugador(id);
         jugadores.push(jugador);
         res.setHeader("Access-Control-Allow-Origin", "*");

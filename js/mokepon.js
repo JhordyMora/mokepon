@@ -23,6 +23,7 @@ const ataqueSection = document.querySelector("#botones");
 const sectionVerMapa = document.querySelector("#ver-mapa");
 const mapa = document.querySelector("#mapa");
 
+let jugadorId = null;
 let mokepones = [];
 let mokemonJugador;
 let mokemonEnemigo;
@@ -158,6 +159,7 @@ function unirseAlJuegoBackEnd(){
                     res.text()
                         .then(function(data){
                                 console.log(data)
+                                jugadorId = data;
                             }
                         )
                 }
@@ -224,6 +226,24 @@ function seleccionarMascotaJugador(){
     } else {
         alert("No has seleccionado ningun Mokepon");
     }
+    mokemonJugadorBackEnd(mokemonJugador); // seleccionarMokepon();
+}
+
+function mokemonJugadorBackEnd(mokemonJugador){
+    fetch(`http://localhost:8080/mokepon/${jugadorId}`, 
+        {
+            method: "post",
+            headers:    {
+                            "Content-Type" : "application/json"
+                        },
+            body: JSON.stringify(
+                {
+                    mokepon: mokemonJugador
+                }
+            )
+
+        }
+    )
 }
 
 function setStatsBottonsPlayer(mokemonJugador){
