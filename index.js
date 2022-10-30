@@ -46,7 +46,7 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
     }
     )
     
-    app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
+app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
         const jugadorId = req.params.jugadorId || "";
         const mokemonPosXBackEnd = req.body.mokepon.x || 0;
         const mokemonPosYBackEnd = req.body.mokepon.y || 0;
