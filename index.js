@@ -14,21 +14,46 @@ class Jugador{
     asignarMokepon(mokepon){
         this.mokepon = mokepon;
     }
+
+    actualizarPosicion(x,y){
+        this.mokepon.x = x;
+        this.mokepon.y = y;
+    }
 }
 
 class Mokepon{
-    constructor(nombre){
+    constructor(nombre, x = 0, y = 0){
         this.nombre = nombre;
+        this.x = x;
+        this.y = y;
     }
 }
 
 app.post("/mokepon/:jugadorId", (req, res)=>{
         const jugadorId = req.params.jugadorId || "";
+        // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
         const mokemon = req.body.mokepon || "";
         const mokemonBackEnd = new Mokepon(mokemon.nombre);
         for(jugador of jugadores){
             if(jugador.id === jugadorId){
                 jugador.asignarMokepon(mokemonBackEnd);
+            } else {
+                console.log("Jugador no encontrado");
+            }
+            
+        }
+        res.end();
+    }
+    )
+    
+    app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
+        const jugadorId = req.params.jugadorId || "";
+        const mokemonPosXBackEnd = req.body.mokepon.x || 0;
+        const mokemonPosYBackEnd = req.body.mokepon.y || 0;
+        
+        for(jugador of jugadores){
+            if(jugador.id === jugadorId){
+                jugador.actualizarPosicion(mokemonPosXBackEnd, mokemonPosYBackEnd);
             } else {
                 console.log("Jugador no encontrado");
             }
