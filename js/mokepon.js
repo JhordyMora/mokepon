@@ -468,6 +468,9 @@ function pintarCanvas(){
         mapa.height
     )
     mokemonJugador.pintarMokemon();
+
+    enviarPosicionBackEnd(mokemonJugador.x, mokemonJugador.y);
+
     for(mokemon of mokemonesEnemigosLista){
         mokemon.pintarMokemon();
     }
@@ -486,6 +489,23 @@ function pintarCanvas(){
             }
 
     }
+}
+
+function enviarPosicionBackEnd(x, y){
+    fetch(`http://localhost:8080/mokepon/${jugadorId}/posicion`, 
+        {
+            method: "post",
+            headers: {
+                        "Content-Type": "application/json"
+                    },
+            body: JSON.stringify({
+                // se pudo haver escrito solo x, y, pq cuando son iguales, js lo sabe interpretar
+                x: x,
+                y: y
+            })
+        }
+    
+    )
 }
 
 function moverMokeponDerecha(){

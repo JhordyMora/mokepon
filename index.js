@@ -48,8 +48,9 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
     
 app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
         const jugadorId = req.params.jugadorId || "";
-        const mokemonPosXBackEnd = req.body.mokepon.x || 0;
-        const mokemonPosYBackEnd = req.body.mokepon.y || 0;
+        // aqui se pone x y no mokepon.x pq en la parte del front end ya se hizo eso
+        const mokemonPosXBackEnd = req.body.x || 0;
+        const mokemonPosYBackEnd = req.body.y || 0;
         
         for(jugador of jugadores){
             if(jugador.id === jugadorId){
