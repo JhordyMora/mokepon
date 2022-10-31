@@ -62,7 +62,14 @@ app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
         }
         console.log(jugadores);
         console.log(jugadorId);
-        res.end();
+
+        const enemigos = jugadores.filter((jugador)=>{jugadorId!= jugador.id})
+        res.send(
+            {
+                // acordarse de ese truco de que si el key y el value son iguales, se escribe una vez
+                enemigos,
+            }
+        );
     }
 )
 
