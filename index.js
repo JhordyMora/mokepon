@@ -55,9 +55,10 @@ app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
         for(jugador of jugadores){
             if(jugador.id === jugadorId){
                 jugador.actualizarPosicion(mokemonPosXBackEnd, mokemonPosYBackEnd);
-            } else {
-                console.log("Jugador no encontrado");
-            }
+            } 
+            //else {
+            //    console.log("Jugador no encontrado");
+            //}
             
         }
         
