@@ -48,6 +48,7 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
     
 app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
         const jugadorId = req.params.jugadorId || "";
+        // Aqui se pone en body el valor del key del dict que se envie en el front end
         const mokemonPosXBackEnd = req.body.x || 0;
         const mokemonPosYBackEnd = req.body.y || 0;
         
