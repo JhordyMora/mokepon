@@ -61,7 +61,7 @@ app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
             
         }
         
-        const enemigos = jugadores.filter((jugador)=>{jugadorId!= jugador.id})
+        const enemigos = jugadores.filter((jugador)=> jugadorId !== jugador.id )
         res.send(
             {
                 // acordarse de ese truco de que si el key y el value son iguales, se escribe una vez
