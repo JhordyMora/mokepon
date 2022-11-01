@@ -367,7 +367,7 @@ function ataqueTierra(){
 }
 
 function enviarAtaqueBackEnd(){
-    fetch(`/mokepon/${jugadorId}/ataques`,
+    fetch(`http://localhost:8080/mokepon/${jugadorId}/ataques`,
         {
             method: "post",
             headers: {
