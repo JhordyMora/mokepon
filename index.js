@@ -54,7 +54,6 @@ app.post("/mokepon/:jugadorId/ataques", (req, res)=>{
     const jugadorId = req.params.jugadorId || "";
     // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
     const ataques = req.body.ataques || "";
-    const mokemonBackEnd = new Mokepon(mokemon.nombre);
     for(jugador of jugadores){
         if(jugador.id === jugadorId){
             jugador.asignarAtaques(ataques);
