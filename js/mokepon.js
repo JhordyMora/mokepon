@@ -256,7 +256,8 @@ function setStatsBottonsPlayer(mokemonJugador){
         ataques = `<button id=${ataque.id} class="ataques">${ataque.nombre}</button>`
         ataquesMokemonJugador.push(ataque.id);
         ataqueSection.innerHTML += ataques;    
-            });
+    });
+
     if(ataquesMokemonJugador.includes("btn-fuego")){
         botonFuego = document.querySelector("#btn-fuego");
         botonFuego.addEventListener("click", ataqueFuego);
@@ -349,20 +350,37 @@ function aleatorio(min, max){
 
 function ataqueFuego(){
     ataqueJugador = "Fuego";
-    ataqueAleatorioEnemigo();
+    //ataqueAleatorioEnemigo();
+    enviarAtaqueBackEnd();
 }
 
 function ataqueAgua(){
     ataqueJugador = "Agua";
-    ataqueAleatorioEnemigo();
+    //ataqueAleatorioEnemigo();
+    enviarAtaqueBackEnd();
 }
 
 function ataqueTierra(){
     ataqueJugador = "Tierra";
-    ataqueAleatorioEnemigo();
+    //ataqueAleatorioEnemigo();
+    enviarAtaqueBackEnd();
 }
 
-function ataqueAleatorioEnemigo(){
+function enviarAtaqueBackEnd(){
+    fetch(`/mokepon/${jugadorId}/ataques`,
+        {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                ataques: ataqueJugador
+            })
+        }
+    )
+}
+
+/*function ataqueAleatorioEnemigo(){
     mokemonEnemigo.ataques.forEach((ataque)=>{
         ataquesMokemonEnemigo.push(ataque.id);  
     });
@@ -377,7 +395,7 @@ function ataqueAleatorioEnemigo(){
         ataqueEnemigo = "Tierra";
     }
     combate();
-}
+}*/
 
 function crearMensaje(){
     pVidasJugador.innerHTML = "Vidas: " + vidasJugador;

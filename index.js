@@ -19,6 +19,10 @@ class Jugador{
         this.mokepon.x = x;
         this.mokepon.y = y;
     }
+
+    asignarAtaques(ataqueJugador){
+        this.ataques = ataqueJugador;
+    }
 }
 
 class Mokepon{
@@ -44,7 +48,24 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
         }
         res.end();
     }
-    )
+)
+
+app.post("/mokepon/:jugadorId/ataques", (req, res)=>{
+    const jugadorId = req.params.jugadorId || "";
+    // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
+    const ataques = req.body.ataques || "";
+    const mokemonBackEnd = new Mokepon(mokemon.nombre);
+    for(jugador of jugadores){
+        if(jugador.id === jugadorId){
+            jugador.asignarAtaques(ataques);
+        } else {
+            console.log("Ataque no encontrado");
+        }
+        
+    }
+    res.end();
+    }
+)
     
 app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
         const jugadorId = req.params.jugadorId || "";
