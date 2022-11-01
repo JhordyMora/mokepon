@@ -53,14 +53,14 @@ mapaBackground.src = "/assets/mokemap.png"
 
 
 class Mokepon{
-    constructor(nombre, foto, vida, mokeFaceMap,id= null,x=10, y=10){
+    constructor(nombre, foto, vida, mokeFaceMap,id= null){
         this.id = id;
         this.nombre=nombre;
         this.foto=foto;
         this.vida = vida;
         this.ataques=[];
-        this.x = x;
-        this.y = y;
+        this.x = aleatorio(0,mapa.width);
+        this.y = aleatorio(0,mapa.height);
         this.ancho = 60;
         this.alto = 60;
         this.mapaFoto = new Image();
@@ -78,13 +78,13 @@ class Mokepon{
             this.alto
             );
         }
-    }
+}
     
-    let hipodoge = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_hipodoge_attack.png",5,"/assets/hipodoge.png");
+let hipodoge = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_hipodoge_attack.png",5,"/assets/hipodoge.png");
     
-    let capipego = new Mokepon("Capipego","./assets/mokepons_mokepon_capipepo_attack.png",5,"/assets/capipepo.png");
+let capipego = new Mokepon("Capipego","./assets/mokepons_mokepon_capipepo_attack.png",5,"/assets/capipepo.png");
     
-    let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png",5,"/assets/ratigueya.png");
+let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png",5,"/assets/ratigueya.png");
 
 let langostelvis = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png",5,"/assets/capipepo.png");
 
@@ -102,32 +102,32 @@ capipego.ataques.push(
     {nombre: "💧", id: "btn-agua"},
     {nombre: "🔥", id: "btn-fuego"},
     {nombre: "🌱", id: "btn-tierra"},
-    );
+);
     
-    ratigueya.ataques.push(
-        {nombre: "🌱", id: "btn-tierra"},
-        {nombre: "💧", id: "btn-agua"},
-        {nombre: "🔥", id: "btn-fuego"},
-        );
+ratigueya.ataques.push(
+    {nombre: "🌱", id: "btn-tierra"},
+    {nombre: "💧", id: "btn-agua"},
+    {nombre: "🔥", id: "btn-fuego"},
+);
+    
+langostelvis.ataques.push(
+    {nombre: "🌱", id: "btn-tierra"},
+    {nombre: "💧", id: "btn-agua"},
+);
+    
+tucapalma.ataques.push(
+    {nombre: "💧", id: "btn-agua"},
+    {nombre: "🔥", id: "btn-fuego"},
+);
         
-        langostelvis.ataques.push(
-            {nombre: "🌱", id: "btn-tierra"},
-            {nombre: "💧", id: "btn-agua"},
-            );
-            
-            tucapalma.ataques.push(
-                {nombre: "💧", id: "btn-agua"},
-                {nombre: "🔥", id: "btn-fuego"},
-                );
-                
-                pydos.ataques.push(
+pydos.ataques.push(
     {nombre: "🔥", id: "btn-fuego"},
     {nombre: "🌱", id: "btn-tierra"},
-    );
+);
     
-    mokepones.push(hipodoge,capipego,ratigueya,langostelvis,tucapalma,pydos);
+mokepones.push(hipodoge,capipego,ratigueya,langostelvis,tucapalma,pydos);
 
-    function iniciarJuego(){
+function iniciarJuego(){
         sectionSeleccionarAtaque.style.display = "none"; 
         seccionReiniciar.style.display = "none";
         sectionVerMapa.style.display = "none";
@@ -168,7 +168,7 @@ function unirseAlJuegoBackEnd(){
         )
     }
 
-    function seleccionarMascotaJugador(){
+function seleccionarMascotaJugador(){
         if(inputHipodoge.checked){
         mokemonJugador = hipodoge;
         // I think i can delete the parameter hier bcs we have a globa variable -> mokemon jugador
@@ -248,14 +248,14 @@ function mokemonJugadorBackEnd(mokemonJugador){
             )
         }
         
-        function setStatsBottonsPlayer(mokemonJugador){
-            spanMascotaJugador.innerHTML = "Tu Mascota: " + mokemonJugador.nombre;
-            vidasJugador = mokemonJugador.vida;
-            pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
-            mokemonJugador.ataques.forEach((ataque)=>{
-                ataques = `<button id=${ataque.id} class="ataques">${ataque.nombre}</button>`
-                ataquesMokemonJugador.push(ataque.id);
-                ataqueSection.innerHTML += ataques;    
+function setStatsBottonsPlayer(mokemonJugador){
+    spanMascotaJugador.innerHTML = "Tu Mascota: " + mokemonJugador.nombre;
+    vidasJugador = mokemonJugador.vida;
+    pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
+    mokemonJugador.ataques.forEach((ataque)=>{
+        ataques = `<button id=${ataque.id} class="ataques">${ataque.nombre}</button>`
+        ataquesMokemonJugador.push(ataque.id);
+        ataqueSection.innerHTML += ataques;    
             });
     if(ataquesMokemonJugador.includes("btn-fuego")){
         botonFuego = document.querySelector("#btn-fuego");
@@ -511,7 +511,7 @@ function enviarPosicionBackEnd(x, y){
                 res.json().then(function(data){
                         console.log(data);
                         //console.log(data.enemigos);
-                        data.enemigos.forEach(function(enemigo){
+                        mokemonesEnemigosLista = data.enemigos.map(function(enemigo){
                             if(enemigo.mokepon.nombre){
                                 const mokeponNombre = enemigo.mokepon.nombre  || "";
                                 let mokeEnemigoHuman = null;
@@ -564,7 +564,7 @@ function enviarPosicionBackEnd(x, y){
                                 mokeEnemigoHuman.y = enemigo.mokepon.y;
                                 mokeEnemigoHuman.x = enemigo.mokepon.x;
 
-                                mokeEnemigoHuman.pintarMokemon();
+                                return mokeEnemigoHuman;
                             }    
                             }
                         )
