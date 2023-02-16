@@ -1,8 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap'); */
 
-body{
+:root{
     font-family: 'Bungee Spice', cursive;
-    background-color: #041562;
+    background-color: #1837c5;
+    background-image: url("https://assets.pokemon.com//assets/cms2-de-de/img/misc/virtual-backgrounds/masters/forest.jpg");
+    background-color: #cccccc; 
+    height: 100%; 
+    width: 100%;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover; 
 }
 
 .titulo {
@@ -62,10 +69,10 @@ input{
 #btn-mascota{
     width: 180px;
     height: 40px;
-    background: transparent;
+    background: white;
     border-radius: 40px;
     color: orange;
-    border: 2px solid;
+    border: 2px solid red;
     font-family: 'Bungee Spice', cursive;
     margin: 20px 0px 0px 0px;
 }
@@ -77,9 +84,10 @@ input{
 }
 
 #mapa{
-    width: 75%;
-    height: 60%;
+    width: 39%;
+    height: 100%;
     border: 2px solid black;
+    border-radius: 15px;
     background-color: white;
 }
 
@@ -171,11 +179,13 @@ input{
 
 #resultadoCombate{
     box-sizing: border-box;
+    height: 19%;
     width: 100%;
     border: 5px solid black;
     padding: 15px;
     background-color: #FEF5AC;
     text-align: center;
+    overflow:auto;
 }
 
 #mensaje-final{

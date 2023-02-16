@@ -176,7 +176,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        //selectionEnemiesForMap();
+        selectionEnemiesForMap();
         iniciarMapa();
     } else if(inputCapipego.checked){
         mokemonJugador = capipego;
@@ -185,7 +185,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        //selectionEnemiesForMap();
+        selectionEnemiesForMap();
         iniciarMapa();
     } else if(inputRatigueya.checked){
         mokemonJugador = ratigueya;
@@ -194,7 +194,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        //selectionEnemiesForMap();
+        selectionEnemiesForMap();
         iniciarMapa();
     } else if(inputLangostelvis.checked){
         mokemonJugador = langostelvis;
@@ -203,7 +203,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        //selectionEnemiesForMap();
+        selectionEnemiesForMap();
         iniciarMapa();
     } else if(inputTucapalma.checked){
         mokemonJugador = tucapalma;
@@ -212,7 +212,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        //selectionEnemiesForMap();
+        selectionEnemiesForMap();
         iniciarMapa();
     } else if(inputPydos.checked){
         mokemonJugador = pydos;
@@ -221,7 +221,7 @@ function seleccionarMascotaJugador(){
         sectionSeleccionarMascota.style.display = 'none'
         //sectionSeleccionarAtaque.style.display = "Flex";
         sectionVerMapa.style.display = "flex";
-        //selectionEnemiesForMap();
+        selectionEnemiesForMap();
         iniciarMapa();
     } else {
         alert("No has seleccionado ningun Mokepon");
@@ -280,7 +280,7 @@ function seleccionarMascotaEnemigo(mokemonEnemigo){
     pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
 }
 
-/*function selectionEnemiesForMap(){
+function selectionEnemiesForMap(){
     let pydosEnemy = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png",5,"/assets/capipepo.png");;
     let tucapalmaEnemy = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png",5,"/assets/capipepo.png");;
     let langostelvisEnemy = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png",5,"/assets/capipepo.png");;
@@ -334,7 +334,7 @@ function seleccionarMascotaEnemigo(mokemonEnemigo){
         mokemonesEnemigosLista[i].y = randomPositionMokeY[i];
     }
     //console.log(mokemonesEnemigosLista);
-}*/
+}
 
 function randomPositionEnemiesMoke(randomNumberOfEnemiesMap){
     for (let i =0;i<randomNumberOfEnemiesMap;i++){
@@ -349,19 +349,19 @@ function aleatorio(min, max){
 
 function ataqueFuego(){
     ataqueJugador = "Fuego";
-    //ataqueAleatorioEnemigo();
+    ataqueAleatorioEnemigo();
     enviarAtaqueBackEnd();
 }
 
 function ataqueAgua(){
     ataqueJugador = "Agua";
-    //ataqueAleatorioEnemigo();
+    ataqueAleatorioEnemigo();
     enviarAtaqueBackEnd();
 }
 
 function ataqueTierra(){
     ataqueJugador = "Tierra";
-    //ataqueAleatorioEnemigo();
+    ataqueAleatorioEnemigo();
     enviarAtaqueBackEnd();
 }
 
@@ -379,7 +379,7 @@ function enviarAtaqueBackEnd(){
     )
 }
 
-/*function ataqueAleatorioEnemigo(){
+function ataqueAleatorioEnemigo(){
     mokemonEnemigo.ataques.forEach((ataque)=>{
         ataquesMokemonEnemigo.push(ataque.id);  
     });
@@ -394,7 +394,7 @@ function enviarAtaqueBackEnd(){
         ataqueEnemigo = "Tierra";
     }
     combate();
-}*/
+}
 
 function crearMensaje(){
     pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
