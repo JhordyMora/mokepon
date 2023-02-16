@@ -83,6 +83,46 @@ input{
     background-color: white;
 }
 
+#direction-rows{
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 150px;
+    width: 150px;
+    grid-template-areas: 
+    ". btn-up ."
+    "btn-left . btn-right"
+    ". btn-down .";
+}
+
+#btn-up{
+    grid-area: btn-up;
+    border-color: orange;
+    background-color: wheat;
+    border-radius: 3px;
+}
+
+#btn-left{
+    grid-area: btn-left; 
+    border-color: orange;
+    background-color: wheat;
+    border-radius: 3px;
+}
+
+#btn-right{
+    grid-area: btn-right;
+    border-color: orange;
+    background-color: wheat;
+    border-radius: 3px;
+}
+
+#btn-down{
+    grid-area: btn-down;
+    border-color: orange; 
+    background-color: wheat;
+    border-radius: 3px;
+}
+
 #seleccionar-ataque{
     flex-direction: column;
     align-items: center;
