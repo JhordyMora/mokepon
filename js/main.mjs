@@ -1,6 +1,6 @@
 // hacer las imagenes mas pequenhas y mejorar todo lo relacionado con ellas
 import Mokepon from './mokepon.mjs';
-import { aleatorio } from './utils.mjs';
+import { aleatorio, crearMensaje } from './utils.mjs';
 import { unirseAlJuegoBackEnd, mokemonJugadorBackEnd, enviarAtaqueBackEnd, enviarPosicionBackEnd } from './backendEndService.mjs';
 
 const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
@@ -21,6 +21,8 @@ const contenedorTarjetas = document.querySelector("#contenedorTarjetas");
 const ataqueSection = document.querySelector("#botones");
 const sectionVerMapa = document.querySelector("#ver-mapa");
 const mapa = document.querySelector("#mapa");
+
+let historialCombate = document.querySelector("#historial-combate");
 
 let jugadorId = null;
 let mokepones = [];
@@ -325,12 +327,6 @@ function ataqueAleatorioEnemigo(){
 //     pAtaqueEnemigo.innerHTML = ataqueEnemigo;
 // }
 
-function crearMensaje(resultadoBatalla){
-    let historialCombate = document.querySelector("#historial-combate");
-
-    historialCombate.innerHTML += `<br>Tu mascota atacó con ${ataqueJugador}. La mascota de tu rival atacó con ${ataqueEnemigo}. ${resultadoBatalla}<br>`
-}
-
 function crearMensajeFinal(resultadoFinal){
     sectionMessage.style.display = "flex";
     sectionMessage.innerHTML = resultadoFinal;
@@ -349,21 +345,21 @@ function crearMensajeFinal(resultadoFinal){
 
 function combate(){
     if(ataqueEnemigo==ataqueJugador){
-        crearMensaje("Empate 🔁");
+        historialCombate.innerHTML += crearMensaje("Empate 🔁", ataqueEnemigo, ataqueJugador);
     } else if(ataqueJugador == "Fuego" && ataqueEnemigo == "Tierra"){
-        crearMensaje("Ganaste 🥳");
+        historialCombate.innerHTML += crearMensaje("Ganaste 🥳", ataqueEnemigo, ataqueJugador);
         vidasEnemigo--;
         pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
     } else if(ataqueJugador == "Agua" && ataqueEnemigo == "Fuego"){
-        crearMensaje("Ganaste 🥳");
+        historialCombate.innerHTML += crearMensaje("Ganaste 🥳", ataqueEnemigo, ataqueJugador);
         vidasEnemigo--;
         pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
     } else if(ataqueJugador == "Tierra" && ataqueEnemigo == "Agua"){
-        crearMensaje("Ganaste 🥳");
+        historialCombate.innerHTML += crearMensaje("Ganaste 🥳", ataqueEnemigo, ataqueJugador);
         vidasEnemigo--;
         pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
     } else {
-        crearMensaje("Perdiste😪");
+        historialCombate.innerHTML += crearMensaje("Perdiste😪", ataqueEnemigo, ataqueJugador);
         vidasJugador--;
         pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
     }
