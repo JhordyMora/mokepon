@@ -1,4 +1,8 @@
 const mapa = document.querySelector("#mapa");
+let lienzo = mapa.getContext("2d");
+
+
+import { aleatorio } from "./utils.mjs";
 
 export default class Mokepon{
     constructor(nombre, foto, vida, mokeFaceMap,id= null){
@@ -26,8 +30,4 @@ export default class Mokepon{
             this.alto
             );
         }
-}
-
-function aleatorio(min, max){
-    return Math.floor(Math.random()*(max-min+1)+min);
 }

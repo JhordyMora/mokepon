@@ -221,16 +221,21 @@ function mokemonJugadorBackEnd(mokemonJugador){
             )
         }
         
+        ratigueya.ataques.push(
+            {nombre: "🌱", id: "btn-tierra"},
+            {nombre: "💧", id: "btn-agua"},
+            {nombre: "🔥", id: "btn-fuego"},
+        );
+
 function setStatsBottonsPlayer(mokemonJugador){
     spanMascotaJugador.innerHTML = "Tu Mascota: " + mokemonJugador.nombre;
     vidasJugador = mokemonJugador.vida;
     pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
     mokemonJugador.ataques.forEach((ataque)=>{
-        ataques = `<button id=${ataque.id} class="ataques">${ataque.nombre}</button>`
+        mokemonJugador.ataques = `<button id=${ataque.id} class="ataques">${ataque.nombre}</button>`;
         ataquesMokemonJugador.push(ataque.id);
-        ataqueSection.innerHTML += ataques;    
+        ataqueSection.innerHTML += mokemonJugador.ataques;    
     });
-
     if(ataquesMokemonJugador.includes("btn-fuego")){
         botonFuego = document.querySelector("#btn-fuego");
         botonFuego.addEventListener("click", ataqueFuego);
@@ -459,8 +464,7 @@ function pintarCanvas(){
     mokemonJugador.pintarMokemon();
 
     enviarPosicionBackEnd(mokemonJugador.x, mokemonJugador.y);
-
-    for(mokemon of mokemonesEnemigosLista){
+    for(let mokemon of mokemonesEnemigosLista){
         mokemon.pintarMokemon();
     }
 
@@ -468,7 +472,7 @@ function pintarCanvas(){
         mokemonJugador.velocidadY !=0
         ){
             for(mokemonEnemigo of mokemonesEnemigosLista){
-                isCollision =revisarColision(mokemonEnemigo, mokemonJugador);
+                let isCollision =revisarColision(mokemonEnemigo, mokemonJugador);
 
                 if(isCollision){
                     sectionVerMapa.style.display = "none";
