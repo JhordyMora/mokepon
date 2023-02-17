@@ -13,8 +13,8 @@ const spanMascotaJugador = document.querySelector("#mascota-jugador");
 
 const pVidasJugador = document.querySelector("#vidas-jugador");
 const pVidasEnemigo = document.querySelector("#vidas-enemigo");
-const pAtaqueJugador = document.querySelector("#ataque-jugador");
-const pAtaqueEnemigo = document.querySelector("#ataque-enemigo");
+// const pAtaqueJugador = document.querySelector("#ataque-jugador");
+// const pAtaqueEnemigo = document.querySelector("#ataque-enemigo");
 
 const sectionMessage = document.querySelector("#mensaje-final");
 const contenedorTarjetas = document.querySelector("#contenedorTarjetas");
@@ -35,7 +35,7 @@ let ataqueJugador;
 let ataqueEnemigo;
 let vidasJugador;
 let vidasEnemigo;
-let opcionDeMokepones;
+// let opcionDeMokepones;
 let inputHipodoge;
 let inputCapipego;
 let inputRatigueya;
@@ -52,17 +52,12 @@ let intervalo;
 let mapaBackground = new Image();
 mapaBackground.src = "/assets/mokemap.png"
 let listaMokepones;
-    
+
 let hipodoge = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_hipodoge_attack.png",5,"/assets/hipodoge.png");
-    
 let capipego = new Mokepon("Capipego","./assets/mokepons_mokepon_capipepo_attack.png",5,"/assets/capipepo.png");
-    
 let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png",5,"/assets/ratigueya.png");
-
 let langostelvis = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png",5,"./assets/mokepons_mokepon_langostelvis_attack.png");
-
 let tucapalma = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png",5,"./assets/mokepons_mokepon_tucapalma_attack.png");
-
 let pydos = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png",5,"./assets/mokepons_mokepon_pydos_attack.png");
 
 hipodoge.ataques.push(
@@ -129,63 +124,35 @@ function seleccionarMascotaJugador(){
     if(inputHipodoge.checked){
         mokemonJugador = hipodoge;
         // I think i can delete the parameter hier bcs we have a globa variable -> mokemon jugador
-        setStatsBottonsPlayer(mokemonJugador);
-        //seleccionarMascotaEnemigo();
-        sectionSeleccionarMascota.style.display = 'none'
-        //sectionSeleccionarAtaque.style.display = "Flex";
-        sectionVerMapa.style.display = "flex";
-        selectionEnemiesForMap();
-        iniciarMapa();
+        inicializacionDelMundo(mokemonJugador);
     } else if(inputCapipego.checked){
         mokemonJugador = capipego;
-        setStatsBottonsPlayer(mokemonJugador);
-        //seleccionarMascotaEnemigo();
-        sectionSeleccionarMascota.style.display = 'none'
-        //sectionSeleccionarAtaque.style.display = "Flex";
-        sectionVerMapa.style.display = "flex";
-        selectionEnemiesForMap();
-        iniciarMapa();
+        inicializacionDelMundo(mokemonJugador);
     } else if(inputRatigueya.checked){
         mokemonJugador = ratigueya;
-        setStatsBottonsPlayer(mokemonJugador);
-        //seleccionarMascotaEnemigo();
-        sectionSeleccionarMascota.style.display = 'none'
-        //sectionSeleccionarAtaque.style.display = "Flex";
-        sectionVerMapa.style.display = "flex";
-        selectionEnemiesForMap();
-        iniciarMapa();
+        inicializacionDelMundo(mokemonJugador);
     } else if(inputLangostelvis.checked){
         mokemonJugador = langostelvis;
-        setStatsBottonsPlayer(mokemonJugador);
-        //seleccionarMascotaEnemigo();
-        sectionSeleccionarMascota.style.display = 'none'
-        //sectionSeleccionarAtaque.style.display = "Flex";
-        sectionVerMapa.style.display = "flex";
-        selectionEnemiesForMap();
-        iniciarMapa();
+        inicializacionDelMundo(mokemonJugador);
     } else if(inputTucapalma.checked){
         mokemonJugador = tucapalma;
-        setStatsBottonsPlayer(mokemonJugador);
-        //seleccionarMascotaEnemigo();
-        sectionSeleccionarMascota.style.display = 'none'
-        //sectionSeleccionarAtaque.style.display = "Flex";
-        sectionVerMapa.style.display = "flex";
-        selectionEnemiesForMap();
-        iniciarMapa();
+        inicializacionDelMundo(mokemonJugador);
     } else if(inputPydos.checked){
         mokemonJugador = pydos;
-        setStatsBottonsPlayer(mokemonJugador);
-        //seleccionarMascotaEnemigo();
-        sectionSeleccionarMascota.style.display = 'none'
-        //sectionSeleccionarAtaque.style.display = "Flex";
-        sectionVerMapa.style.display = "flex";
-        selectionEnemiesForMap();
-        iniciarMapa();
+        inicializacionDelMundo(mokemonJugador);
     } else {
         alert("No has seleccionado ningun Mokepon");
     }
     //console.log(mokemonJugador);
-    // mokemonJugadorBackEnd(mokemonJugador); // seleccionarMokepon();
+    // mokemonJugadorBackEnd(mokemonJugador);
+}
+
+function inicializacionDelMundo(mokemonJugador){
+    setStatsBottonsPlayer(mokemonJugador);
+    sectionSeleccionarMascota.style.display = 'none'
+    sectionVerMapa.style.display = "flex";
+    selectionEnemiesForMap();
+    iniciarMapa();
 }
 
 function setStatsBottonsPlayer(mokemonJugador){
@@ -213,8 +180,7 @@ function setStatsBottonsPlayer(mokemonJugador){
 
 function seleccionarMascotaEnemigo(mokemonEnemigo){
     let spanMascotaEnemigo = document.querySelector("#mascota-enemigo");
-    //let randomNumber = aleatorio(0,mokepones.length-1);
-    //mokemonEnemigo = mokepones[randomNumber];
+
     spanMascotaEnemigo.innerHTML = "La Mascota de tu Enemigo: " + mokemonEnemigo.nombre;
     vidasEnemigo = mokemonEnemigo.vida;
     pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
