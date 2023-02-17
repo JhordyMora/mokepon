@@ -410,10 +410,7 @@ function crearMensaje(resultadoBatalla){
 }
 
 function crearMensajeFinal(resultadoFinal){
-    sectionMessage.style.border = "5px solid black";
-    sectionMessage.style.padding = "10px 0px 10px 0px";
-    sectionMessage.style.backgroundColor = "#FEF5AC";
-    sectionMessage.style.marginTop = "30px";
+    sectionMessage.style.display = "flex";
     sectionMessage.innerHTML = resultadoFinal;
 
     if(ataquesMokemonJugador.includes("btn-fuego")){

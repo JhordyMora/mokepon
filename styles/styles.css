@@ -9,6 +9,11 @@
     background-position: center; 
     background-repeat: no-repeat;
     background-size: cover; 
+    --primary-color:#E7F0D1 ;
+    --secondary-color:  #CDD993;
+    --terciary-color: wheat;
+    --primary-color-border: #2B4F33;
+    --secondary-color-border: orange;
 }
 
 .titulo {
@@ -40,18 +45,18 @@
     flex-direction: column;
     width: 150px;
     height: 150px;
-    background: aquamarine;
+    background: var(--primary-color);
     padding: 10px;
     box-sizing: border-box;
     margin: 10px;
-    border: 2px solid red;
+    border: 3px solid var(--primary-color-border);
     border-radius: 20px;
     justify-content: center;
     align-items: center;
 }
 
 input[type="radio"]:checked + label{
-    background-color: white;
+    background-color: #9BC186;
 }
 
 .tarjeta-de-mokepon img{
@@ -68,10 +73,10 @@ input{
 #btn-mascota{
     width: 180px;
     height: 40px;
-    background: white;
+    background:var(--primary-color);
     border-radius: 40px;
-    color: orange;
-    border: 2px solid red;
+    color: black;
+    border: 2px solid var(--primary-color-border) ;
     font-family: 'Bungee Spice', cursive;
     margin: 20px 0px 0px 0px;
 }
@@ -85,9 +90,9 @@ input{
 #mapa{
     width: 39%;
     height: 100%;
-    border: 2px solid black;
+    border: 2px solid var(--primary-color-border);
     border-radius: 15px;
-    background-color: white;
+    background-color: var(--terciary-color);
 }
 
 #direction-rows{
@@ -102,32 +107,26 @@ input{
     ". btn-down .";
 }
 
+.movement-btn{
+    border-color: var(--secondary-color-border);
+    background-color: var(--terciary-color);
+    border-radius: 3px;
+}
+
 #btn-up{
     grid-area: btn-up;
-    border-color: orange;
-    background-color: wheat;
-    border-radius: 3px;
 }
 
 #btn-left{
     grid-area: btn-left; 
-    border-color: orange;
-    background-color: wheat;
-    border-radius: 3px;
 }
 
 #btn-right{
     grid-area: btn-right;
-    border-color: orange;
-    background-color: wheat;
-    border-radius: 3px;
 }
 
 #btn-down{
     grid-area: btn-down;
-    border-color: orange; 
-    background-color: wheat;
-    border-radius: 3px;
 }
 
 #seleccionar-ataque{
@@ -138,10 +137,9 @@ input{
 .ataques{
     width: 180px;
     height: 40px;
-    background: wheat;
+    background: var(--terciary-color);
     border-radius: 40px;
-    color: orange;
-    border: 2px solid;
+    border: 2px solid var(--secondary-color-border);
     font-family: 'Bungee Spice', cursive;
     font-size: large;
     margin: 20px 0px 0px 0px;
@@ -153,16 +151,16 @@ input{
 }
 
 #reiniciar{
+    margin: 15px 0 0 0;
     justify-content: center;
 }
 
 #btn-reiniciar{
     width: 180px;
     height: 40px;
-    background: wheat;
+    background: var(--terciary-color);
     border-radius: 40px;
-    color: orange;
-    border: 2px solid;
+    border: 2px solid var(--secondary-color-border);
     font-family: 'Bungee Spice', cursive;
     font-size: large;
     margin: 0px 0px 20px 0px;
@@ -171,34 +169,54 @@ input{
 #ataques{
     display: grid;
     grid-template-columns: 150px 150px;
-    background: white;
-    border: 5px solid black;
+    background: var(--terciary-color);
+    border: 3px solid var(--secondary-color-border);
+    border-radius: 15px;
     padding: 20px;
 }
 
 #mensajes-container{
     width: 45%;
+    margin: 15px 0px;
 }
 
 #mensajes-combate{
     box-sizing: border-box;
     height: 19%;
     width: 100%;
-    border: 5px solid black;
+    border: 5px solid var(--primary-color-border);
     padding: 15px;
-    background-color: #FEF5AC;
+    border-radius: 15px;
+    background-color: var(--primary-color);
     text-align: center;
 }
 
 #mensaje-final{
-    display: flex;
+    margin: 5px 0;
+    display: none;
     justify-content: center;
+    border : 5px solid var(--secondary-color-border);
+    border-radius: 5px;
+    padding : 10px 0px;
+    background-color : var(--terciary-color);
 }
 
 @media (max-width: 1000px) {
+    .titulo {
+        display: flex;
+        justify-content: center;
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .subtitulo{
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+    }
+
     .tarjetas{
         display: grid;
-        /* width: 95%; */
         grid-template-columns: 50% 50%;
         /*align-items: center;
         justify-content: center;*/
@@ -209,4 +227,29 @@ input{
         flex-direction: column;
         align-items: center;      
     }
-  }
+
+    #mapa{
+        width: 100%;
+        height: 100%;
+        border: 2px solid var(--primary-color-border);
+        border-radius: 15px;
+        background-color: var(--terciary-color);
+    }
+
+    #direction-rows{
+        display: inline-grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        height: 150px;
+        width: 150px;
+        grid-template-areas: 
+        ". btn-up ."
+        "btn-left . btn-right"
+        ". btn-down .";
+    }
+
+    #mensajes-container{
+        width: 100%;
+        margin: 15px 0px;
+    }
+}
