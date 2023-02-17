@@ -5,6 +5,7 @@
 // investigar que es viewport - este viene ya por default en el html tag the vs code pero si no es muy importanta para que las cosas sean responsive. escribir el one note
 import Mokepon from './mokepon.mjs';
 import { aleatorio } from './utils.mjs';
+import { unirseAlJuegoBackEnd } from './backendEndService.mjs';
 
 const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
 const seccionReiniciar = document.querySelector("#reiniciar");
@@ -123,24 +124,8 @@ function iniciarJuego(){
     
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
     botonReiniciar.addEventListener("click", reiniciarJuego);
-    unirseAlJuegoBackEnd();
+    jugadorId = unirseAlJuegoBackEnd();
 }
-
-function unirseAlJuegoBackEnd(){
-    fetch("http://localhost:8080/unirse")
-    .then(function(res){
-        console.log(res);
-        if(res.ok){
-            res.text()
-            .then(function(data){
-                                console.log(data)
-                                jugadorId = data;
-                            }
-                            )
-                        }
-                    }
-        )
-    }
 
 function seleccionarMascotaJugador(){
     if(inputHipodoge.checked){
