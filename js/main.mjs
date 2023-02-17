@@ -59,11 +59,11 @@ let capipego = new Mokepon("Capipego","./assets/mokepons_mokepon_capipepo_attack
     
 let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png",5,"/assets/ratigueya.png");
 
-let langostelvis = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png",5,"/assets/capipepo.png");
+let langostelvis = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png",5,"./assets/mokepons_mokepon_langostelvis_attack.png");
 
-let tucapalma = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png",5,"/assets/capipepo.png");
+let tucapalma = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png",5,"./assets/mokepons_mokepon_tucapalma_attack.png");
 
-let pydos = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png",5,"/assets/capipepo.png");
+let pydos = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png",5,"./assets/mokepons_mokepon_pydos_attack.png");
 
 hipodoge.ataques.push(
     {nombre: "🔥", id: "btn-fuego"},
@@ -206,26 +206,17 @@ function seleccionarMascotaJugador(){
 
 function mokemonJugadorBackEnd(mokemonJugador){
     fetch(`http://localhost:8080/mokepon/${jugadorId}`, 
-    {
-        method: "post",
-        headers:    {
-            "Content-Type" : "application/json"
-        },
-        body: JSON.stringify(
-            {
+        {
+            method: "post",
+            headers:    {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
                 mokepon: mokemonJugador
-                }
-                )
-                
-            }
-            )
+            })
         }
-        
-        ratigueya.ataques.push(
-            {nombre: "🌱", id: "btn-tierra"},
-            {nombre: "💧", id: "btn-agua"},
-            {nombre: "🔥", id: "btn-fuego"},
-        );
+    )
+}
 
 function setStatsBottonsPlayer(mokemonJugador){
     spanMascotaJugador.innerHTML = "Tu Mascota: " + mokemonJugador.nombre;
