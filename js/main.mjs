@@ -4,6 +4,7 @@
 // mejorar los responsive
 // investigar que es viewport - este viene ya por default en el html tag the vs code pero si no es muy importanta para que las cosas sean responsive. escribir el one note
 import Mokepon from './mokepon.mjs';
+import { aleatorio } from './utils.mjs';
 
 const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
 const seccionReiniciar = document.querySelector("#reiniciar");
@@ -311,10 +312,6 @@ function randomPositionEnemiesMoke(randomNumberOfEnemiesMap){
         randomPositionMokeX.push(aleatorio(0,mapa.width));
         randomPositionMokeY.push(aleatorio(0,mapa.height));
     } 
-}
-
-function aleatorio(min, max){
-    return Math.floor(Math.random()*(max-min+1)+min);
 }
 
 function ataqueFuego(){
