@@ -1,5 +1,6 @@
 // hacer las imagenes mas pequenhas y mejorar todo lo relacionado con ellas
-import Mokepon from './mokepon.mjs';
+// organizar mejor los assets
+import Mokepon, { mokeponesParaJugador } from './mokepon.mjs';
 import { aleatorio, crearMensaje } from './utils.mjs';
 import { unirseAlJuegoBackEnd, mokemonJugadorBackEnd, enviarAtaqueBackEnd, enviarPosicionBackEnd } from './backendEndService.mjs';
 
@@ -53,47 +54,15 @@ let mapaBackground = new Image();
 mapaBackground.src = "/assets/mokemap.png"
 let listaMokepones;
 
-let hipodoge = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_hipodoge_attack.png",5,"/assets/hipodoge.png");
-let capipego = new Mokepon("Capipego","./assets/mokepons_mokepon_capipepo_attack.png",5,"/assets/capipepo.png");
-let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png",5,"/assets/ratigueya.png");
-let langostelvis = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png",5,"./assets/mokepons_mokepon_langostelvis_attack.png");
-let tucapalma = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png",5,"./assets/mokepons_mokepon_tucapalma_attack.png");
-let pydos = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png",5,"./assets/mokepons_mokepon_pydos_attack.png");
+mokepones= mokeponesParaJugador();
 
-hipodoge.ataques.push(
-    {nombre: "🔥", id: "btn-fuego"},
-    {nombre: "💧", id: "btn-agua"},
-    {nombre: "🌱", id: "btn-tierra"},
-);
 
-capipego.ataques.push(
-    {nombre: "💧", id: "btn-agua"},
-    {nombre: "🔥", id: "btn-fuego"},
-    {nombre: "🌱", id: "btn-tierra"},
-);
-    
-ratigueya.ataques.push(
-    {nombre: "🌱", id: "btn-tierra"},
-    {nombre: "💧", id: "btn-agua"},
-    {nombre: "🔥", id: "btn-fuego"},
-);
-    
-langostelvis.ataques.push(
-    {nombre: "🌱", id: "btn-tierra"},
-    {nombre: "💧", id: "btn-agua"},
-);
-    
-tucapalma.ataques.push(
-    {nombre: "💧", id: "btn-agua"},
-    {nombre: "🔥", id: "btn-fuego"},
-);
-        
-pydos.ataques.push(
-    {nombre: "🔥", id: "btn-fuego"},
-    {nombre: "🌱", id: "btn-tierra"},
-);
-    
-mokepones.push(hipodoge,capipego,ratigueya,langostelvis,tucapalma,pydos);
+let hipodoge = mokepones[0];
+let capipego = mokepones[1];
+let ratigueya = mokepones[2];
+let langostelvis = mokepones[3];
+let tucapalma = mokepones[4];
+let pydos = mokepones[5];
 
 function iniciarJuego(){
         sectionSeleccionarAtaque.style.display = "none"; 
