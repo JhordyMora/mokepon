@@ -168,7 +168,7 @@ function unirseAlJuegoBackEnd(){
     }
 
 function seleccionarMascotaJugador(){
-        if(inputHipodoge.checked){
+    if(inputHipodoge.checked){
         mokemonJugador = hipodoge;
         // I think i can delete the parameter hier bcs we have a globa variable -> mokemon jugador
         setStatsBottonsPlayer(mokemonJugador);
