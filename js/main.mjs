@@ -267,8 +267,6 @@ function ataqueTierra(){
     // enviarAtaqueBackEnd();
 }
 
-
-
 function ataqueAleatorioEnemigo(){
     mokemonEnemigo.ataques.forEach((ataque)=>{
         ataquesMokemonEnemigo.push(ataque.id);  
