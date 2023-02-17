@@ -387,7 +387,10 @@ function iniciarMapa(){
     // setInterval function dice que cada vez que la funcion pintar este activa (pq tenemos oprimido el raton sin soltarlo), se repetira la funcion cada 50 milisegundos
     intervalo = setInterval(pintarCanvas, 50);
     window.addEventListener("keydown",sePresionoUnaTecla);
-    window.addEventListener("keyup",detenerMov);
+    window.addEventListener("keyup",()=>{
+        mokemonJugador.velocidadY = 0;
+        mokemonJugador.velocidadX = 0;
+    });
 }
 
 function pintarCanvas(){
@@ -434,41 +437,28 @@ function moverMokeponDerecha(){
         //console.log(`posicion moke: ${mokemonJugador.x}`);
         //console.log(`tamanho pixeles foto moke: ${mokemonJugador.mapaFoto.width}`);
         //mejorar para que se pare cuando llegue en le borde se pare
-    } else {
-        detenerMov();
-    }
+    } 
 }
 
 function moverMokeponIzquierda(){
     if(mokemonJugador.x > 4){
         mokemonJugador.velocidadX = -2;
         // mejorar para que se pare cuando llegue en le borde se pare
-    } else {
-        detenerMov();
-    }
+    } 
 }
 
 function moverMokeponArriba(){
     if(mokemonJugador.y > 0){
         mokemonJugador.velocidadY = -2;
         //mejorar para que se pare cuando llegue en le borde se pare
-    } else {
-        detenerMov();
-    }
+    } 
 }
 
 function moverMokeponAbajo(){
     if(mokemonJugador.y < mapa.height - 80){
         mokemonJugador.velocidadY = 2;
         //mejorar para que se pare cuando llegue en le borde se pare
-    } else {
-        detenerMov();
-    }
-}
-
-function detenerMov(){
-    mokemonJugador.velocidadY = 0;
-    mokemonJugador.velocidadX = 0;
+    } 
 }
 
 function sePresionoUnaTecla(e){
@@ -507,7 +497,8 @@ function revisarColision(enemigo, mokemonJugador){
         return false;
     }
 
-    detenerMov();   
+    mokemonJugador.velocidadY = 0;
+    mokemonJugador.velocidadX = 0;   
     return true;
 }
 
