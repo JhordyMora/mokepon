@@ -5,7 +5,7 @@ let lienzo = mapa.getContext("2d");
 import { aleatorio } from "./utils.mjs";
 
 export default class Mokepon{
-    constructor(nombre, foto, vida, mokeFaceMap,id= null){
+    constructor(nombre, foto, vida, mokeFaceMap, id= null){
         this.id = id;
         this.nombre=nombre;
         this.foto=foto;
