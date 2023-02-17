@@ -3,6 +3,8 @@
 // poner estilo botones y mejor organizacion
 // mejorar los responsive
 // investigar que es viewport - este viene ya por default en el html tag the vs code pero si no es muy importanta para que las cosas sean responsive. escribir el one note
+import Mokepon from './mokepon.mjs';
+
 const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
 const seccionReiniciar = document.querySelector("#reiniciar");
 const botonMascotaJugador = document.querySelector("#btn-mascota");
@@ -49,35 +51,7 @@ let lienzo = mapa.getContext("2d");
 let intervalo;
 let mapaBackground = new Image();
 mapaBackground.src = "/assets/mokemap.png"
-
-
-class Mokepon{
-    constructor(nombre, foto, vida, mokeFaceMap,id= null){
-        this.id = id;
-        this.nombre=nombre;
-        this.foto=foto;
-        this.vida = vida;
-        this.ataques=[];
-        this.x = aleatorio(0,mapa.width);
-        this.y = aleatorio(0,mapa.height);
-        this.ancho = 60;
-        this.alto = 60;
-        this.mapaFoto = new Image();
-        this.mapaFoto.src = mokeFaceMap;
-        this.velocidadX = 0;
-        this.velocidadY = 0;
-    }
-    
-    pintarMokemon(){
-        lienzo.drawImage(
-            this.mapaFoto,
-            this.x,
-            this.y,
-            this.ancho,
-            this.alto
-            );
-        }
-}
+let listaMokepones;
     
 let hipodoge = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_hipodoge_attack.png",5,"/assets/hipodoge.png");
     
@@ -396,12 +370,12 @@ function ataqueAleatorioEnemigo(){
     combate();
 }
 
-function crearMensaje(){
-    pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
-    pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
-    pAtaqueJugador.innerHTML = ataqueJugador;
-    pAtaqueEnemigo.innerHTML = ataqueEnemigo;
-}
+// function crearMensaje(){
+//     pVidasJugador.innerHTML = "Vidas: " + vidasJugador;
+//     pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
+//     pAtaqueJugador.innerHTML = ataqueJugador;
+//     pAtaqueEnemigo.innerHTML = ataqueEnemigo;
+// }
 
 function crearMensaje(resultadoBatalla){
     let historialCombate = document.querySelector("#historial-combate");
