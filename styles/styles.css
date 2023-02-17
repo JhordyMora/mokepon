@@ -2,9 +2,8 @@
 
 :root{
     font-family: 'Bungee Spice', cursive;
-    background-color: #1837c5;
+    background-color: #b3c339;
     background-image: url("https://assets.pokemon.com//assets/cms2-de-de/img/misc/virtual-backgrounds/masters/forest.jpg");
-    background-color: #cccccc; 
     height: 100%; 
     width: 100%;
     background-position: center; 
@@ -177,7 +176,11 @@ input{
     padding: 20px;
 }
 
-#resultadoCombate{
+#mensajes-container{
+    width: 45%;
+}
+
+#mensajes-combate{
     box-sizing: border-box;
     height: 19%;
     width: 100%;

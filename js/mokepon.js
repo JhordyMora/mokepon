@@ -404,9 +404,9 @@ function crearMensaje(){
 }
 
 function crearMensaje(resultadoBatalla){
-    let resultadoCombate = document.querySelector("#resultadoCombate");
+    let historialCombate = document.querySelector("#historial-combate");
 
-    resultadoCombate.innerHTML += `<br>Tu mascota atacó con ${ataqueJugador}. La mascota de tu rival atacó con ${ataqueEnemigo}. ${resultadoBatalla}<br>`
+    historialCombate.innerHTML += `<br>Tu mascota atacó con ${ataqueJugador}. La mascota de tu rival atacó con ${ataqueEnemigo}. ${resultadoBatalla}<br>`
 }
 
 function crearMensajeFinal(resultadoFinal){
