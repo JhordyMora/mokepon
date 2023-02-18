@@ -22,7 +22,7 @@ export function mokemonJugadorBackEnd(mokemonJugador){
     fetch(`http://localhost:8080/mokepon/${jugadorId}`, 
         {
             method: "post",
-            headers:    {
+            headers: {
                 "Content-Type" : "application/json"
             },
             body: JSON.stringify({
