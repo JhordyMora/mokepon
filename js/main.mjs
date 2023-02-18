@@ -110,7 +110,7 @@ function seleccionarMascotaJugador(){
     } else {
         alert("No has seleccionado ningun Mokepon");
     }
-    // mokemonJugadorBackEnd(mokemonJugador);
+    mokemonJugadorBackEnd(mokemonJugador);
 }
 
 function inicializacionDelMundo(mokemonJugador){

@@ -33,7 +33,18 @@ class Mokepon{
     }
 }
 
+app.get("/unirse", (req,res)=>{
+    const id = `${Math.round(Math.random()*100)}`;
+    const jugador = new Jugador(id);
+    jugadores.push(jugador);
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    //console.log(req);
+    res.send(jugador.id);
+}
+)
+
 app.post("/mokepon/:jugadorId", (req, res)=>{
+        console.log("jugadores", jugadores);
         const jugadorId = req.params.jugadorId || "";
         // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
         const mokemon = req.body.mokepon || "";
@@ -44,7 +55,6 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
             } else {
                 console.log("Jugador no encontrado");
             }
-            
         }
         res.end();
     }
@@ -91,16 +101,6 @@ app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
         );
         console.log(jugadores);
         console.log(jugadorId);
-    }
-)
-
-app.get("/unirse", (req,res)=>{
-        const id = `${Math.round(Math.random()*100)}`;
-        const jugador = new Jugador(id);
-        jugadores.push(jugador);
-        res.setHeader("Access-Control-Allow-Origin", "*");
-        //console.log(req);
-        res.send(jugador.id);
     }
 )
 
