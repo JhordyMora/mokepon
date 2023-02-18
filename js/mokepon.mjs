@@ -1,5 +1,8 @@
 const mapa = document.querySelector("#mapa");
 let lienzo = mapa.getContext("2d");
+let randomPositionMokeX = [];
+let randomPositionMokeY = [];
+let mokemonesEnemigosLista = [];
 
 
 import { aleatorio } from "./utils.mjs";
@@ -74,4 +77,30 @@ export function creacionListaMokepones() {
     );
         
     return [hipodoge,capipego,ratigueya,langostelvis,tucapalma,pydos]
+}
+
+export function selectionEnemiesForMap(){
+    let listPosibleEnemies = creacionListaMokepones();
+
+    let randomNumberOfEnemiesMap = aleatorio(1,6);
+    randomPositionEnemiesMoke(randomNumberOfEnemiesMap);
+    for(let i = 0; i<randomNumberOfEnemiesMap;i++){
+        let mokeEne = listPosibleEnemies[aleatorio(0,listPosibleEnemies.length-1)];
+        mokemonesEnemigosLista.push(mokeEne);
+    }
+    
+    for(let i = 0; i<mokemonesEnemigosLista.length;i++){
+        mokemonesEnemigosLista[i].x = randomPositionMokeX[i];
+        mokemonesEnemigosLista[i].y = randomPositionMokeY[i];
+    }
+    //console.log(mokemonesEnemigosLista);
+    return mokemonesEnemigosLista;
+
+}
+
+function randomPositionEnemiesMoke(randomNumberOfEnemiesMap){
+    for (let i =0;i<randomNumberOfEnemiesMap;i++){
+        randomPositionMokeX.push(aleatorio(0,mapa.width));
+        randomPositionMokeY.push(aleatorio(0,mapa.height));
+    } 
 }

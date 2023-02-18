@@ -1,7 +1,7 @@
 // hacer las imagenes mas pequenhas y mejorar todo lo relacionado con ellas
 // organizar mejor los assets
-// creacion lista de otros pokemones enemigos usar mokepon function
-import Mokepon, { creacionListaMokepones } from './mokepon.mjs';
+// index.js en backend folder
+import Mokepon, { creacionListaMokepones, selectionEnemiesForMap } from './mokepon.mjs';
 import { aleatorio, crearMensaje } from './utils.mjs';
 import { unirseAlJuegoBackEnd, mokemonJugadorBackEnd, enviarAtaqueBackEnd, enviarPosicionBackEnd } from './backendEndService.mjs';
 
@@ -31,8 +31,6 @@ let mokepones = [];
 let mokemonJugador;
 let mokemonEnemigo;
 let mokemonesEnemigosLista = [];
-let randomPositionMokeX = [];
-let randomPositionMokeY = [];
 let ataqueJugador;
 let ataqueEnemigo;
 let vidasJugador;
@@ -112,7 +110,6 @@ function seleccionarMascotaJugador(){
     } else {
         alert("No has seleccionado ningun Mokepon");
     }
-    //console.log(mokemonJugador);
     // mokemonJugadorBackEnd(mokemonJugador);
 }
 
@@ -120,7 +117,7 @@ function inicializacionDelMundo(mokemonJugador){
     setStatsBottonsPlayer(mokemonJugador);
     sectionSeleccionarMascota.style.display = 'none'
     sectionVerMapa.style.display = "flex";
-    selectionEnemiesForMap();
+    mokemonesEnemigosLista = selectionEnemiesForMap();
     iniciarMapa();
 }
 
@@ -153,30 +150,6 @@ function seleccionarMascotaEnemigo(mokemonEnemigo){
     spanMascotaEnemigo.innerHTML = "La Mascota de tu Enemigo: " + mokemonEnemigo.nombre;
     vidasEnemigo = mokemonEnemigo.vida;
     pVidasEnemigo.innerHTML = "Vidas: " + vidasEnemigo;
-}
-
-function selectionEnemiesForMap(){
-    let listPosibleEnemies = creacionListaMokepones();
-
-    let randomNumberOfEnemiesMap = aleatorio(1,6);
-    randomPositionEnemiesMoke(randomNumberOfEnemiesMap);
-    for(let i = 0; i<randomNumberOfEnemiesMap;i++){
-        let mokeEne = listPosibleEnemies[aleatorio(0,listPosibleEnemies.length-1)];
-        mokemonesEnemigosLista.push(mokeEne);
-    }
-    
-    for(let i = 0; i<mokemonesEnemigosLista.length;i++){
-        mokemonesEnemigosLista[i].x = randomPositionMokeX[i];
-        mokemonesEnemigosLista[i].y = randomPositionMokeY[i];
-    }
-    //console.log(mokemonesEnemigosLista);
-}
-
-function randomPositionEnemiesMoke(randomNumberOfEnemiesMap){
-    for (let i =0;i<randomNumberOfEnemiesMap;i++){
-        randomPositionMokeX.push(aleatorio(0,mapa.width));
-        randomPositionMokeY.push(aleatorio(0,mapa.height));
-    } 
 }
 
 function ataqueFuego(){
@@ -323,9 +296,6 @@ function pintarCanvas(){
 function moverMokeponDerecha(){
     if(mokemonJugador.x < mapa.width-80){
         mokemonJugador.velocidadX = 2;
-        //console.log(`ancho mapa: ${mapa.width}`);
-        //console.log(`posicion moke: ${mokemonJugador.x}`);
-        //console.log(`tamanho pixeles foto moke: ${mokemonJugador.mapaFoto.width}`);
         //mejorar para que se pare cuando llegue en le borde se pare
     } 
 }
