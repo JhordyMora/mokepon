@@ -1,7 +1,7 @@
 // hacer las imagenes mas pequenhas y mejorar todo lo relacionado con ellas
 // organizar mejor los assets
 // creacion lista de otros pokemones enemigos usar mokepon function
-import Mokepon, { mokeponesParaJugador } from './mokepon.mjs';
+import Mokepon, { creacionListaMokepones } from './mokepon.mjs';
 import { aleatorio, crearMensaje } from './utils.mjs';
 import { unirseAlJuegoBackEnd, mokemonJugadorBackEnd, enviarAtaqueBackEnd, enviarPosicionBackEnd } from './backendEndService.mjs';
 
@@ -55,7 +55,7 @@ let mapaBackground = new Image();
 mapaBackground.src = "/assets/mokemap.png"
 let listaMokepones;
 
-mokepones = mokeponesParaJugador();
+mokepones = creacionListaMokepones();
 
 let hipodoge = mokepones[0];
 let capipego = mokepones[1];
@@ -156,46 +156,7 @@ function seleccionarMascotaEnemigo(mokemonEnemigo){
 }
 
 function selectionEnemiesForMap(){
-    let pydosEnemy = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png",5,"/assets/capipepo.png");;
-    let tucapalmaEnemy = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png",5,"/assets/capipepo.png");;
-    let langostelvisEnemy = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png",5,"/assets/capipepo.png");;
-    let hipodogeEnemy = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_hipodoge_attack.png",5,"/assets/hipodoge.png");;
-    let capipegoEnemy = new Mokepon("Capipego","./assets/mokepons_mokepon_capipepo_attack.png",5,"/assets/capipepo.png");;
-    let ratigueyaEnemy = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png",5,"/assets/ratigueya.png");;
-    let listPosibleEnemies = [pydosEnemy, tucapalmaEnemy, langostelvisEnemy, hipodogeEnemy, capipegoEnemy, ratigueyaEnemy];
-
-    hipodogeEnemy.ataques.push(
-        {nombre: "🔥", id: "btn-fuego"},
-        {nombre: "💧", id: "btn-agua"},
-        {nombre: "🌱", id: "btn-tierra"},
-        );
-        
-    capipegoEnemy.ataques.push(
-        {nombre: "💧", id: "btn-agua"},
-        {nombre: "🔥", id: "btn-fuego"},
-        {nombre: "🌱", id: "btn-tierra"},
-    );
-    
-    ratigueyaEnemy.ataques.push(
-        {nombre: "🌱", id: "btn-tierra"},
-        {nombre: "💧", id: "btn-agua"},
-        {nombre: "🔥", id: "btn-fuego"},
-    );
-    
-    langostelvisEnemy.ataques.push(
-        {nombre: "🌱", id: "btn-tierra"},
-        {nombre: "💧", id: "btn-agua"},
-    );
-    
-    tucapalmaEnemy.ataques.push(
-        {nombre: "💧", id: "btn-agua"},
-        {nombre: "🔥", id: "btn-fuego"},
-    );
-    
-    pydosEnemy.ataques.push(
-        {nombre: "🔥", id: "btn-fuego"},
-        {nombre: "🌱", id: "btn-tierra"},
-    );
+    let listPosibleEnemies = creacionListaMokepones();
 
     let randomNumberOfEnemiesMap = aleatorio(1,6);
     randomPositionEnemiesMoke(randomNumberOfEnemiesMap);
