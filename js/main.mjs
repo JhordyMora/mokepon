@@ -1,6 +1,5 @@
 // hacer las imagenes mas pequenhas y mejorar todo lo relacionado con ellas
-// organizar mejor los assets
-// index.js en backend folder
+// teclas moviemiento en html no reaccionan
 import Mokepon, { creacionListaMokepones, selectionEnemiesForMap } from './mokepon.mjs';
 import { aleatorio, crearMensaje } from './utils.mjs';
 import { unirseAlJuegoBackEnd, mokemonJugadorBackEnd, enviarAtaqueBackEnd, enviarPosicionBackEnd } from './backendEndService.mjs';
