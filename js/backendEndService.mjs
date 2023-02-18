@@ -62,10 +62,10 @@ export function enviarPosicionBackEnd(x, y){
     ).then(function (res){
             if (res.ok){
                 res.json().then(function(data){
-                        console.log(data);
+                        // console.log(data);
                         //console.log(data.enemigos);
                         let mokemonesEnemigosLista = data.enemigos.map(function(enemigo){
-                            if(enemigo.mokepon.nombre){
+                            if(enemigo?.mokepon.nombre){
                                 const mokeponNombre = enemigo.mokepon.nombre  || "";
                                 let mokeEnemigoHuman = null;
                                 if (mokeponNombre === "Hipodoge"){
@@ -87,13 +87,14 @@ export function enviarPosicionBackEnd(x, y){
                                 } else if (mokeponNombre === "Tucapalma"){
                                     mokeEnemigoHuman = listaMokepones[5];
                                 }
-                                console.log(enemigo.x);
                                 mokeEnemigoHuman.y = enemigo.mokepon.y;
                                 mokeEnemigoHuman.x = enemigo.mokepon.x;
-
+                                // console.log("enemigo.mokepon", enemigo.mokepon);
+                                // console.log("mokeEnemigoHuman", mokeEnemigoHuman);
                                 return mokeEnemigoHuman;
                             }    
                         })
+                        console.log("mokemonesEnemigosLista", mokemonesEnemigosLista);
                         return mokemonesEnemigosLista;
                     }
                 )
