@@ -272,11 +272,10 @@ function pintarCanvas(){
     mokemonJugador.pintarMokemon();
     var humanosBackend;
     humanosBackend = enviarPosicionBackEnd(mokemonJugador.x, mokemonJugador.y);
-    console.log("humanosBackend", humanosBackend);
-    for(let enemigo in humanosBackend){
+    for(let enemigo of humanosBackend){
         mokemonesEnemigosLista.push(enemigo);
     }
-    console.log("mokemonesEnemigosLista", mokemonesEnemigosLista);
+    // console.log("mokemonesEnemigosLista", mokemonesEnemigosLista);
     for(let mokemon of mokemonesEnemigosLista){
         mokemon.pintarMokemon();
     }
