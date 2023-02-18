@@ -50,7 +50,7 @@ let botonTierra;
 let lienzo = mapa.getContext("2d");
 let intervalo;
 let mapaBackground = new Image();
-mapaBackground.src = "/assets/mokemap.png"
+mapaBackground.src = "assets/maps/mokemap.png"
 let listaMokepones;
 
 mokepones = creacionListaMokepones();
