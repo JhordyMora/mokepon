@@ -51,7 +51,6 @@ let intervalo;
 let mapaBackground = new Image();
 mapaBackground.src = "assets/maps/mokemap.png"
 let listaMokepones;
-let enemigosHumanos= [];
 
 mokepones = creacionListaMokepones();
 
@@ -271,14 +270,13 @@ function pintarCanvas(){
         mapa.height
     )
     mokemonJugador.pintarMokemon();
-
-    enemigosHumanos = enviarPosicionBackEnd(mokemonJugador.x, mokemonJugador.y);
-    // console.log("funcion", enviarPosicionBackEnd(mokemonJugador.x, mokemonJugador.y));
-    console.log("enemigosHumanos", enemigosHumanos);
-    for(enemigo in enemigosHumanos){
-        mokemonesEnemigosLista.push(enemigo.Mokepon)
+    var humanosBackend;
+    humanosBackend = enviarPosicionBackEnd(mokemonJugador.x, mokemonJugador.y);
+    console.log("humanosBackend", humanosBackend);
+    for(let enemigo in humanosBackend){
+        mokemonesEnemigosLista.push(enemigo);
     }
-    
+    console.log("mokemonesEnemigosLista", mokemonesEnemigosLista);
     for(let mokemon of mokemonesEnemigosLista){
         mokemon.pintarMokemon();
     }

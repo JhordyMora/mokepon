@@ -2,6 +2,7 @@ import { creacionListaMokepones } from "./mokepon.mjs";
 
 let jugadorId;
 let listaMokepones = creacionListaMokepones();
+let mokemonesEnemigosLista;
 
 export function unirseAlJuegoBackEnd(){
     fetch("http://localhost:8080/unirse")
@@ -62,9 +63,7 @@ export function enviarPosicionBackEnd(x, y){
     ).then(function (res){
             if (res.ok){
                 res.json().then(function(data){
-                        // console.log(data);
-                        //console.log(data.enemigos);
-                        let mokemonesEnemigosLista = data.enemigos.map(function(enemigo){
+                        mokemonesEnemigosLista = data.enemigos.map(function(enemigo){
                             if(enemigo?.mokepon.nombre){
                                 const mokeponNombre = enemigo.mokepon.nombre  || "";
                                 let mokeEnemigoHuman = null;
@@ -94,11 +93,11 @@ export function enviarPosicionBackEnd(x, y){
                                 return mokeEnemigoHuman;
                             }    
                         })
-                        console.log("mokemonesEnemigosLista", mokemonesEnemigosLista);
-                        return mokemonesEnemigosLista;
                     }
                 )
             }
         }
     )
+    console.log("mokemonesEnemigosLista", mokemonesEnemigosLista);
+    return mokemonesEnemigosLista;
 }
