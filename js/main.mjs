@@ -1,5 +1,6 @@
 // hacer las imagenes mas pequenhas y mejorar todo lo relacionado con ellas
 // organizar mejor los assets
+// creacion lista de otros pokemones enemigos usar mokepon function
 import Mokepon, { mokeponesParaJugador } from './mokepon.mjs';
 import { aleatorio, crearMensaje } from './utils.mjs';
 import { unirseAlJuegoBackEnd, mokemonJugadorBackEnd, enviarAtaqueBackEnd, enviarPosicionBackEnd } from './backendEndService.mjs';
