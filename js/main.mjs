@@ -55,8 +55,7 @@ let mapaBackground = new Image();
 mapaBackground.src = "/assets/mokemap.png"
 let listaMokepones;
 
-mokepones= mokeponesParaJugador();
-
+mokepones = mokeponesParaJugador();
 
 let hipodoge = mokepones[0];
 let capipego = mokepones[1];
