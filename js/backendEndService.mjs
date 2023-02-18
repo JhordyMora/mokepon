@@ -69,14 +69,14 @@ export function enviarPosicionBackEnd(x, y){
                                 const mokeponNombre = enemigo.mokepon.nombre  || "";
                                 let mokeEnemigoHuman = null;
                                 if (mokeponNombre === "Hipodoge"){
-                                    mokeEnemigoHuman = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_hipodoge_attack.png",5,"/assets/hipodoge.png");;
+                                    mokeEnemigoHuman = new Mokepon("Hipodoge", "../assets/images/mokepons/hipodoge.png",5,"../assets/icons/mokepons/hipodoge.png");;
                                     mokeEnemigoHuman.ataques.push(
                                         {nombre: "🔥", id: "btn-fuego"},
                                         {nombre: "💧", id: "btn-agua"},
                                         {nombre: "🌱", id: "btn-tierra"},
                                     )
                                 } else if (mokeponNombre === "Capipego"){
-                                    mokeEnemigoHuman = new Mokepon("Capipego","./assets/mokepons_mokepon_capipepo_attack.png",5,"/assets/capipepo.png");;
+                                    mokeEnemigoHuman = new Mokepon("Capipego","../assets/images/mokepons/capipepo.png",5,"../assets/icons/mokepons/capipepo.png");;
                                     mokeEnemigoHuman.ataques.push(
                                         {nombre: "💧", id: "btn-agua"},
                                         {nombre: "🔥", id: "btn-fuego"},
@@ -84,7 +84,7 @@ export function enviarPosicionBackEnd(x, y){
                                     );
 
                                 } else if (mokeponNombre === "Ratigueya"){
-                                    mokeEnemigoHuman = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png",5,"/assets/ratigueya.png");;
+                                    mokeEnemigoHuman = new Mokepon("Ratigueya","../assets/images/mokepons/ratigueya.png",5,"../assets/icons/mokepons/ratigueya.png");;
                                     mokeEnemigoHuman.ataques.push(
                                         {nombre: "🌱", id: "btn-tierra"},
                                         {nombre: "💧", id: "btn-agua"},
@@ -92,21 +92,21 @@ export function enviarPosicionBackEnd(x, y){
                                     );
 
                                 } else if (mokeponNombre === "Pydos"){
-                                    mokeEnemigoHuman = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png",5,"/assets/capipepo.png");;
+                                    mokeEnemigoHuman = new Mokepon("Pydos","../assets/images/mokepons/pydos.png",5,"../assets/icons/mokepons/pydos.png");;
                                     mokeEnemigoHuman.ataques.push(
                                         {nombre: "🔥", id: "btn-fuego"},
                                         {nombre: "🌱", id: "btn-tierra"},
                                     );
 
                                 } else if (mokeponNombre === "Langostelvis"){
-                                    mokeEnemigoHuman = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png",5,"/assets/capipepo.png");;
+                                    mokeEnemigoHuman = new Mokepon("Langostelvis","../assets/images/mokepons/langostelvis.png",5,"../assets/icons/mokepons/langostelvis.png");;
                                     mokeEnemigoHuman.ataques.push(
                                         {nombre: "🌱", id: "btn-tierra"},
                                         {nombre: "💧", id: "btn-agua"},
                                     );
 
                                 } else if (mokeponNombre === "Tucapalma"){
-                                    mokeEnemigoHuman = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png",5,"/assets/capipepo.png");;
+                                    mokeEnemigoHuman = new Mokepon("Tucapalma","../assets/images/mokepons/tucapalma.png",5,"../assets/icons/mokepons/tucapalma.png");;
                                     mokeEnemigoHuman.ataques.push(
                                         {nombre: "💧", id: "btn-agua"},
                                         {nombre: "🔥", id: "btn-fuego"},

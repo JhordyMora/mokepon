@@ -36,14 +36,14 @@ export default class Mokepon{
 }
 
 export function creacionListaMokepones() {
-    let hipodoge = new Mokepon("Hipodoge", "./assets/mokepons_mokepon_hipodoge_attack.png",5,"/assets/hipodoge.png");
-    let capipego = new Mokepon("Capipego","./assets/mokepons_mokepon_capipepo_attack.png",5,"/assets/capipepo.png");
-    let ratigueya = new Mokepon("Ratigueya","./assets/mokepons_mokepon_ratigueya_attack.png",5,"/assets/ratigueya.png");
-    let langostelvis = new Mokepon("Langostelvis","./assets/mokepons_mokepon_langostelvis_attack.png",5,"./assets/mokepons_mokepon_langostelvis_attack.png");
-    let tucapalma = new Mokepon("Tucapalma","./assets/mokepons_mokepon_tucapalma_attack.png",5,"./assets/mokepons_mokepon_tucapalma_attack.png");
-    let pydos = new Mokepon("Pydos","./assets/mokepons_mokepon_pydos_attack.png",5,"./assets/mokepons_mokepon_pydos_attack.png");
+    let hipodoge = new Mokepon("Hipodoge", "../assets/images/mokepons/hipodoge.png",5,"../assets/icons/mokepons/hipodoge.png");
+    let capipego = new Mokepon("Capipego","../assets/images/mokepons/capipepo.png",5,"../assets/icons/mokepons/capipepo.png");
+    let ratigueya = new Mokepon("Ratigueya","../assets/images/mokepons/ratigueya.png",5,"../assets/icons/mokepons/ratigueya.png");
+    let langostelvis = new Mokepon("Langostelvis","../assets/images/mokepons/langostelvis.png",5,"../assets/icons/mokepons/langostelvis.png");
+    let tucapalma = new Mokepon("Tucapalma","../assets/images/mokepons/tucapalma.png",5,"../assets/icons/mokepons/tucapalma.png");
+    let pydos = new Mokepon("Pydos","../assets/images/mokepons/pydos.png",5,"../assets/icons/mokepons/pydos.png");
 
-    hipodoge.ataques.push(
+hipodoge.ataques.push(
         {nombre: "🔥", id: "btn-fuego"},
         {nombre: "💧", id: "btn-agua"},
         {nombre: "🌱", id: "btn-tierra"},
