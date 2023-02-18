@@ -1,4 +1,7 @@
+import { creacionListaMokepones } from "./mokepon.mjs";
+
 let jugadorId;
+let listaMokepones = creacionListaMokepones();
 
 export function unirseAlJuegoBackEnd(){
     fetch("http://localhost:8080/unirse")
@@ -10,10 +13,8 @@ export function unirseAlJuegoBackEnd(){
                                 console.log(data)
                                 jugadorId = data;
                                 return data;
-                            }
-                            )
-                        }
-            }
+            })
+        }}
     )
 }
 
@@ -58,60 +59,33 @@ export function enviarPosicionBackEnd(x, y){
                 y: y
             })
         }
-    
     ).then(function (res){
             if (res.ok){
                 res.json().then(function(data){
                         console.log(data);
                         //console.log(data.enemigos);
-                        mokemonesEnemigosLista = data.enemigos.map(function(enemigo){
+                        let mokemonesEnemigosLista = data.enemigos.map(function(enemigo){
                             if(enemigo.mokepon.nombre){
                                 const mokeponNombre = enemigo.mokepon.nombre  || "";
                                 let mokeEnemigoHuman = null;
                                 if (mokeponNombre === "Hipodoge"){
-                                    mokeEnemigoHuman = new Mokepon("Hipodoge", "../assets/images/mokepons/hipodoge.png",5,"../assets/icons/mokepons/hipodoge.png");;
-                                    mokeEnemigoHuman.ataques.push(
-                                        {nombre: "🔥", id: "btn-fuego"},
-                                        {nombre: "💧", id: "btn-agua"},
-                                        {nombre: "🌱", id: "btn-tierra"},
-                                    )
+                                    // mokeEnemigoHuman = new Mokepon("Hipodoge", "../assets/images/mokepons/hipodoge.png",5,"../assets/icons/mokepons/hipodoge.png");
+                                    // mokeEnemigoHuman.ataques.push(
+                                    //     {nombre: "🔥", id: "btn-fuego"},
+                                    //     {nombre: "💧", id: "btn-agua"},
+                                    //     {nombre: "🌱", id: "btn-tierra"},
+                                    // )
+                                    mokeEnemigoHuman = listaMokepones[0]; 
                                 } else if (mokeponNombre === "Capipego"){
-                                    mokeEnemigoHuman = new Mokepon("Capipego","../assets/images/mokepons/capipepo.png",5,"../assets/icons/mokepons/capipepo.png");;
-                                    mokeEnemigoHuman.ataques.push(
-                                        {nombre: "💧", id: "btn-agua"},
-                                        {nombre: "🔥", id: "btn-fuego"},
-                                        {nombre: "🌱", id: "btn-tierra"},
-                                    );
-
+                                    mokeEnemigoHuman = listaMokepones[1]; 
                                 } else if (mokeponNombre === "Ratigueya"){
-                                    mokeEnemigoHuman = new Mokepon("Ratigueya","../assets/images/mokepons/ratigueya.png",5,"../assets/icons/mokepons/ratigueya.png");;
-                                    mokeEnemigoHuman.ataques.push(
-                                        {nombre: "🌱", id: "btn-tierra"},
-                                        {nombre: "💧", id: "btn-agua"},
-                                        {nombre: "🔥", id: "btn-fuego"},
-                                    );
-
+                                    mokeEnemigoHuman = listaMokepones[2]; 
                                 } else if (mokeponNombre === "Pydos"){
-                                    mokeEnemigoHuman = new Mokepon("Pydos","../assets/images/mokepons/pydos.png",5,"../assets/icons/mokepons/pydos.png");;
-                                    mokeEnemigoHuman.ataques.push(
-                                        {nombre: "🔥", id: "btn-fuego"},
-                                        {nombre: "🌱", id: "btn-tierra"},
-                                    );
-
+                                    mokeEnemigoHuman = listaMokepones[4];
                                 } else if (mokeponNombre === "Langostelvis"){
-                                    mokeEnemigoHuman = new Mokepon("Langostelvis","../assets/images/mokepons/langostelvis.png",5,"../assets/icons/mokepons/langostelvis.png");;
-                                    mokeEnemigoHuman.ataques.push(
-                                        {nombre: "🌱", id: "btn-tierra"},
-                                        {nombre: "💧", id: "btn-agua"},
-                                    );
-
+                                    mokeEnemigoHuman = listaMokepones[3];
                                 } else if (mokeponNombre === "Tucapalma"){
-                                    mokeEnemigoHuman = new Mokepon("Tucapalma","../assets/images/mokepons/tucapalma.png",5,"../assets/icons/mokepons/tucapalma.png");;
-                                    mokeEnemigoHuman.ataques.push(
-                                        {nombre: "💧", id: "btn-agua"},
-                                        {nombre: "🔥", id: "btn-fuego"},
-                                    );
-
+                                    mokeEnemigoHuman = listaMokepones[5];
                                 }
                                 console.log(enemigo.x);
                                 mokeEnemigoHuman.y = enemigo.mokepon.y;
@@ -119,8 +93,8 @@ export function enviarPosicionBackEnd(x, y){
 
                                 return mokeEnemigoHuman;
                             }    
-                            }
-                        )
+                        })
+                        return mokemonesEnemigosLista;
                     }
                 )
             }

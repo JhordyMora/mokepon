@@ -51,6 +51,7 @@ let intervalo;
 let mapaBackground = new Image();
 mapaBackground.src = "assets/maps/mokemap.png"
 let listaMokepones;
+let enemigosHumanos;
 
 mokepones = creacionListaMokepones();
 
@@ -83,7 +84,7 @@ function iniciarJuego(){
     
     botonMascotaJugador.addEventListener("click", seleccionarMascotaJugador);
     botonReiniciar.addEventListener("click", reiniciarJuego);
-    // jugadorId = unirseAlJuegoBackEnd();
+    jugadorId = unirseAlJuegoBackEnd();
 }
 
 function seleccionarMascotaJugador(){
@@ -271,7 +272,11 @@ function pintarCanvas(){
     )
     mokemonJugador.pintarMokemon();
 
-    // enviarPosicionBackEnd(mokemonJugador.x, mokemonJugador.y);
+    // enemigosHumanos = enviarPosicionBackEnd(mokemonJugador.x, mokemonJugador.y);
+    // for(enemigo in enemigosHumanos){
+    //     mokemonesEnemigosLista.push(enemigo)
+    // }
+
     for(let mokemon of mokemonesEnemigosLista){
         mokemon.pintarMokemon();
     }

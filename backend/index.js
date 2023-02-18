@@ -38,7 +38,7 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
         // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
         const mokemon = req.body.mokepon || "";
         const mokemonBackEnd = new Mokepon(mokemon.nombre);
-        for(jugador of jugadores){
+        for(let jugador of jugadores){
             if(jugador.id === jugadorId){
                 jugador.asignarMokepon(mokemonBackEnd);
             } else {
@@ -54,7 +54,7 @@ app.post("/mokepon/:jugadorId/ataques", (req, res)=>{
     const jugadorId = req.params.jugadorId || "";
     // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
     const ataques = req.body.ataques || "";
-    for(jugador of jugadores){
+    for(let jugador of jugadores){
         if(jugador.id === jugadorId){
             jugador.asignarAtaques(ataques);
         } else {
@@ -72,7 +72,7 @@ app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
         const mokemonPosXBackEnd = req.body.x || 0;
         const mokemonPosYBackEnd = req.body.y || 0;
         
-        for(jugador of jugadores){
+        for(let jugador of jugadores){
             if(jugador.id === jugadorId){
                 jugador.actualizarPosicion(mokemonPosXBackEnd, mokemonPosYBackEnd);
             } 
@@ -88,9 +88,9 @@ app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
                 // acordarse de ese truco de que si el key y el value son iguales, se escribe una vez
                 enemigos,
             }
-            );
-            console.log(jugadores);
-            console.log(jugadorId);
+        );
+        console.log(jugadores);
+        console.log(jugadorId);
     }
 )
 
