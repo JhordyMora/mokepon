@@ -7,6 +7,7 @@ app.use(express.json());
 const jugadores = [];
 
 class Jugador{
+    ataqueJugador = "nada";
     constructor(id){
         this.id = id;
     }
@@ -21,7 +22,7 @@ class Jugador{
     }
 
     asignarAtaques(ataqueJugador){
-        this.ataques = ataqueJugador;
+        this.ataqueJugador = ataqueJugador;
     }
 }
 
@@ -91,31 +92,30 @@ app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
 app.post("/mokepon/:jugadorId/ataques", (req, res)=>{
     const jugadorId = req.params.jugadorId || "";
     // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
-    const ataques = req.body.ataques || [];
+    const ataqueJugador = req.body.ataqueJugador;
     for(let jugador of jugadores){
         if(jugador.id === jugadorId){
-            jugador.asignarAtaques(ataques);
+            console.log("____________");
+            console.log("jugador.id", jugador.id);
+            console.log("jugadorId", jugadorId);
+            console.log("jugadorataqueJugadorBE", ataqueJugador);
+            console.log("jugador", jugador);
+            jugador.asignarAtaques(ataqueJugador);
         } else {
             console.log("Ataque no encontrado");
+            console.log("____________");
         }
-        
     }
     res.end();
     }
 )
 
-app.get("/mokepon/:jugadorId/ataques", (req, res)=>{
-    const jugadorId = req.params.jugadorId || "";
-    // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
-    for(let jugador of jugadores){
-        if(jugador.id === jugadorId){
-            jugador.asignarAtaques(ataques);
-        } else {
-            console.log("Ataque no encontrado");
-        }
-        
-    }
-    res.end();
+app.get("/mokepon/:jugadorId/ataqueJugador", (req, res)=>{
+        const jugadorId = req.params.jugadorId || "";
+        const jugador = jugadores.find((jugador)=>jugador.id===jugadorId);
+        res.send({
+            ataques: jugador.ataques
+        })
     }
 )
 

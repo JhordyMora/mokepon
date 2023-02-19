@@ -3,6 +3,7 @@ import { creacionListaMokepones } from "./mokepon.mjs";
 let jugadorId;
 let listaMokepones = creacionListaMokepones();
 let mokemonesEnemigosLista;
+let intervalo;
 
 export function unirseAlJuegoBackEnd(){
     fetch("http://localhost:8080/unirse")
@@ -41,10 +42,26 @@ export function enviarAtaqueBackEnd(ataqueJugador){
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                ataques: ataqueJugador,
+                ataqueJugador: ataqueJugador,
             })
         }
     )
+    // intervalo = setInterval(obtenerAtaques, 50);
+}
+
+export function obtenerAtaques(enemigoId){
+    fetch(`http://localhost:8080/mokepon/${enemigoId}/ataqueJugador`)
+        .then(function (res){
+            if(res.ok){
+                res.json()
+                    .then(function({ataques}){
+                        if(ataques != "nada"){
+                            clearInterval(intervalo);
+                            return ataques;
+                        }
+                    })
+            }
+        })
 }
 
 export function enviarPosicionBackEnd(x, y){
@@ -74,14 +91,16 @@ export function enviarPosicionBackEnd(x, y){
                                 } else if (mokeponNombre === "Ratigueya"){
                                     mokeEnemigoHuman = listaMokepones[2]; 
                                 } else if (mokeponNombre === "Pydos"){
-                                    mokeEnemigoHuman = listaMokepones[4];
+                                    mokeEnemigoHuman = listaMokepones[5];
                                 } else if (mokeponNombre === "Langostelvis"){
                                     mokeEnemigoHuman = listaMokepones[3];
                                 } else if (mokeponNombre === "Tucapalma"){
-                                    mokeEnemigoHuman = listaMokepones[5];
+                                    mokeEnemigoHuman = listaMokepones[4];
                                 }
                                 mokeEnemigoHuman.y = enemigo.mokepon.y;
                                 mokeEnemigoHuman.x = enemigo.mokepon.x;
+                                mokeEnemigoHuman.id = enemigo.id;
+                                mokeEnemigoHuman.ataques = "nada";
                                 // console.log("enemigo.mokepon", enemigo.mokepon);
                                 // console.log("mokeEnemigoHuman", mokeEnemigoHuman);
                                 return mokeEnemigoHuman;

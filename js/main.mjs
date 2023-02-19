@@ -2,7 +2,7 @@
 // teclas moviemiento en html no reaccionan
 import Mokepon, { creacionListaMokepones, selectionEnemiesForMap } from './mokepon.mjs';
 import { aleatorio, crearMensaje } from './utils.mjs';
-import { unirseAlJuegoBackEnd, mokemonJugadorBackEnd, enviarAtaqueBackEnd, enviarPosicionBackEnd } from './backendEndService.mjs';
+import { unirseAlJuegoBackEnd, mokemonJugadorBackEnd, enviarAtaqueBackEnd, enviarPosicionBackEnd, obtenerAtaques } from './backendEndService.mjs';
 
 const sectionSeleccionarAtaque = document.querySelector("#seleccionar-ataque");
 const seccionReiniciar = document.querySelector("#reiniciar");
@@ -26,11 +26,12 @@ const mapa = document.querySelector("#mapa");
 let historialCombate = document.querySelector("#historial-combate");
 
 let jugadorId = null;
+let enemigoId = null;
 let mokepones = [];
 let mokemonJugador;
 let mokemonEnemigo;
 let mokemonesEnemigosLista = [];
-let ataqueJugador;
+// let ataqueJugador;
 let ataqueEnemigo;
 let vidasJugador;
 let vidasEnemigo;
@@ -152,21 +153,30 @@ function seleccionarMascotaEnemigo(mokemonEnemigo){
 }
 
 function ataqueFuego(){
-    ataqueJugador = "Fuego";
+    let ataqueJugador = "Fuego";
     // ataqueAleatorioEnemigo();
     enviarAtaqueBackEnd(ataqueJugador);
+    console.log("enemigoId", enemigoId);
+    ataqueEnemigo = obtenerAtaques(enemigoId);
+    combate(ataqueJugador, ataqueEnemigo);
 }
 
 function ataqueAgua(){
-    ataqueJugador = "Agua";
+    let ataqueJugador = "Agua";
     // ataqueAleatorioEnemigo();
     enviarAtaqueBackEnd(ataqueJugador);
+    console.log("enemigoId", enemigoId);
+    ataqueEnemigo = obtenerAtaques(enemigoId);
+    combate(ataqueJugador, ataqueEnemigo);
 }
 
 function ataqueTierra(){
-    ataqueJugador = "Tierra";
+    let ataqueJugador = "Tierra";
     // ataqueAleatorioEnemigo();
     enviarAtaqueBackEnd(ataqueJugador);
+    console.log("enemigoId", enemigoId);
+    ataqueEnemigo = obtenerAtaques(enemigoId);
+    combate(ataqueJugador, ataqueEnemigo);
 }
 
 function ataqueAleatorioEnemigo(){
@@ -209,7 +219,7 @@ function crearMensajeFinal(resultadoFinal){
     seccionReiniciar.style.display = "Flex";
 }
 
-function combate(){
+function combate(ataqueJugador, ataqueEnemigo){
     if(ataqueEnemigo==ataqueJugador){
         historialCombate.innerHTML += crearMensaje("Empate 🔁", ataqueEnemigo, ataqueJugador);
     } else if(ataqueJugador == "Fuego" && ataqueEnemigo == "Tierra"){
@@ -281,6 +291,8 @@ function pintarCanvas(){
         let isCollision =revisarColision(mokemonEnemigo, mokemonJugador);
 
         if(isCollision){
+            clearInterval(intervalo);
+            enemigoId = mokemonEnemigo.id;// no se si es necesario
             sectionVerMapa.style.display = "none";
             seleccionarMascotaEnemigo(mokemonEnemigo);
             sectionSeleccionarAtaque.style.display = "Flex";
