@@ -33,7 +33,7 @@ export function mokemonJugadorBackEnd(mokemonJugador){
     )
 }
 
-export function enviarAtaqueBackEnd(){
+export function enviarAtaqueBackEnd(ataqueJugador){
     fetch(`http://localhost:8080/mokepon/${jugadorId}/ataques`,
         {
             method: "post",
@@ -68,12 +68,6 @@ export function enviarPosicionBackEnd(x, y){
                                 const mokeponNombre = enemigo.mokepon.nombre  || "";
                                 let mokeEnemigoHuman = null;
                                 if (mokeponNombre === "Hipodoge"){
-                                    // mokeEnemigoHuman = new Mokepon("Hipodoge", "../assets/images/mokepons/hipodoge.png",5,"../assets/icons/mokepons/hipodoge.png");
-                                    // mokeEnemigoHuman.ataques.push(
-                                    //     {nombre: "🔥", id: "btn-fuego"},
-                                    //     {nombre: "💧", id: "btn-agua"},
-                                    //     {nombre: "🌱", id: "btn-tierra"},
-                                    // )
                                     mokeEnemigoHuman = listaMokepones[0]; 
                                 } else if (mokeponNombre === "Capipego"){
                                     mokeEnemigoHuman = listaMokepones[1]; 

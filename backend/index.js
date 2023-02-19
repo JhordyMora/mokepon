@@ -63,7 +63,7 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
 app.post("/mokepon/:jugadorId/ataques", (req, res)=>{
     const jugadorId = req.params.jugadorId || "";
     // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
-    const ataques = req.body.ataques || "";
+    const ataques = req.body.ataques || [];
     for(let jugador of jugadores){
         if(jugador.id === jugadorId){
             jugador.asignarAtaques(ataques);

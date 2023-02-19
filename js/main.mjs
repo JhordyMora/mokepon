@@ -153,20 +153,20 @@ function seleccionarMascotaEnemigo(mokemonEnemigo){
 
 function ataqueFuego(){
     ataqueJugador = "Fuego";
-    ataqueAleatorioEnemigo();
-    // enviarAtaqueBackEnd();
+    // ataqueAleatorioEnemigo();
+    enviarAtaqueBackEnd(ataqueJugador);
 }
 
 function ataqueAgua(){
     ataqueJugador = "Agua";
-    ataqueAleatorioEnemigo();
-    // enviarAtaqueBackEnd();
+    // ataqueAleatorioEnemigo();
+    enviarAtaqueBackEnd(ataqueJugador);
 }
 
 function ataqueTierra(){
     ataqueJugador = "Tierra";
-    ataqueAleatorioEnemigo();
-    // enviarAtaqueBackEnd();
+    // ataqueAleatorioEnemigo();
+    enviarAtaqueBackEnd(ataqueJugador);
 }
 
 function ataqueAleatorioEnemigo(){
@@ -276,24 +276,32 @@ function pintarCanvas(){
         mokemonesEnemigosLista.push(enemigo);
     }
     // console.log("mokemonesEnemigosLista", mokemonesEnemigosLista);
-    for(let mokemon of mokemonesEnemigosLista){
-        mokemon.pintarMokemon();
+    for(let mokemonEnemigo of mokemonesEnemigosLista){
+        mokemonEnemigo.pintarMokemon();
+        let isCollision =revisarColision(mokemonEnemigo, mokemonJugador);
+
+        if(isCollision){
+            sectionVerMapa.style.display = "none";
+            seleccionarMascotaEnemigo(mokemonEnemigo);
+            sectionSeleccionarAtaque.style.display = "Flex";
+        }
     }
 
-    if( mokemonJugador.velocidadX !=0 ||
-        mokemonJugador.velocidadY !=0
-        ){
-            for(mokemonEnemigo of mokemonesEnemigosLista){
-                let isCollision =revisarColision(mokemonEnemigo, mokemonJugador);
+    
+    // if( mokemonJugador.velocidadX !=0 ||
+    //     mokemonJugador.velocidadY !=0
+    //     ){
+    //         for(mokemonEnemigo of mokemonesEnemigosLista){
+    //             let isCollision =revisarColision(mokemonEnemigo, mokemonJugador);
 
-                if(isCollision){
-                    sectionVerMapa.style.display = "none";
-                    seleccionarMascotaEnemigo(mokemonEnemigo);
-                    sectionSeleccionarAtaque.style.display = "Flex";
-                }
-            }
+    //             if(isCollision){
+    //                 sectionVerMapa.style.display = "none";
+    //                 seleccionarMascotaEnemigo(mokemonEnemigo);
+    //                 sectionSeleccionarAtaque.style.display = "Flex";
+    //             }
+    //         }
 
-    }
+    // }
 }
 
 function moverMokeponDerecha(){
