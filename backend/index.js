@@ -59,22 +59,6 @@ app.post("/mokepon/:jugadorId", (req, res)=>{
         res.end();
     }
 )
-
-app.post("/mokepon/:jugadorId/ataques", (req, res)=>{
-    const jugadorId = req.params.jugadorId || "";
-    // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
-    const ataques = req.body.ataques || [];
-    for(let jugador of jugadores){
-        if(jugador.id === jugadorId){
-            jugador.asignarAtaques(ataques);
-        } else {
-            console.log("Ataque no encontrado");
-        }
-        
-    }
-    res.end();
-    }
-)
     
 app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
         const jugadorId = req.params.jugadorId || "";
@@ -101,6 +85,37 @@ app.post("/mokepon/:jugadorId/posicion", (req,res)=>{
         );
         console.log(jugadores);
         console.log(jugadorId);
+    }
+)
+
+app.post("/mokepon/:jugadorId/ataques", (req, res)=>{
+    const jugadorId = req.params.jugadorId || "";
+    // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
+    const ataques = req.body.ataques || [];
+    for(let jugador of jugadores){
+        if(jugador.id === jugadorId){
+            jugador.asignarAtaques(ataques);
+        } else {
+            console.log("Ataque no encontrado");
+        }
+        
+    }
+    res.end();
+    }
+)
+
+app.get("/mokepon/:jugadorId/ataques", (req, res)=>{
+    const jugadorId = req.params.jugadorId || "";
+    // esta linea se pudo haber disminuido si se hubiera hecho req.body.mokepon.nombre
+    for(let jugador of jugadores){
+        if(jugador.id === jugadorId){
+            jugador.asignarAtaques(ataques);
+        } else {
+            console.log("Ataque no encontrado");
+        }
+        
+    }
+    res.end();
     }
 )
 

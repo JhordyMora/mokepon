@@ -41,7 +41,7 @@ export function enviarAtaqueBackEnd(ataqueJugador){
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                ataques: ataqueJugador
+                ataques: ataqueJugador,
             })
         }
     )
